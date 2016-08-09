@@ -1,0 +1,262 @@
+{
+  "objectId": "iD6FutjwKq",
+  "affiliateName": "",
+  "affiliateId": "",
+  "availableApps": [
+    "iOS",
+    "Android",
+    "Roku"
+  ],
+  "cmsCustomer": "false",
+  "isAllowsEnableApp": "true",
+  "appId": "Ezmj0jTWNG",
+  "manifestUrl": "http://52.90.29.196:8080/files/wPJuyJsloZ14Rx7rUIk1BLLlpmrVt7rHqD5w3iza/f9149d8af50443a1c0c8a25594976c81_iPhone-69-v1.8.xml",
+  "name": "iPhone 22",
+  "platform": "iOSgggggggggggggggggggggggg",
+  "appType": "iPhone",
+  "version": "1.8",
+  "parentId": "",
+  "isActive": true,
+  "merged": true,
+  "groupId": "",
+  "premiumFeeds": {
+    "apiKey": "key11",
+    "contextAffiliateId": "affiliateid1"
+  },
+  "pushBehavior": {
+    "enabled": "false",
+    "defaultProvider": "airship",
+    "parse": {
+      "appId": "",
+      "appKey": ""
+    },
+    "urbanAirship": {
+      "appId": "",
+      "appKey": "",
+      "showInbox": ""
+    },
+    "channels": []
+  },
+  "analytics": {
+    "googleAnalyticsId": ""
+  },
+  "advertising": {
+    "bannerEnabled": "true",
+    "network": "dfp",
+    "networkKey": "",
+    "autoHideBanner": "true",
+    "inlineRefresh": "",
+    "inlineLocation": "",
+    "inlineEnabled": "true",
+    "video": {
+      "VASTUrl": "",
+      "enabled": "false",
+      "randomNumberParameter": "&amp;correlator="
+    },
+    "interstitialAds": {
+      "enabled": "false",
+      "placeholderImageUrl": "",
+      "adServer": "dfp",
+      "adUnitId": "",
+      "triggerEvent": "foreground",
+      "showPercentage": "100",
+      "minTimeBetweenAds": "12000",
+      "maxTimeBetweenAds": "300000",
+      "placeholderTimeout": "5000"
+    },
+    "recommendation": {
+      "outbrain": {
+        "enabled": "false",
+        "partnerId": "",
+        "outbrainWidgetId": ""
+      }
+    }
+  },
+  "modules": [
+    {
+      "breakingNews": {
+        "feedUrl": "",
+        "showInVersion": "list",
+        "itemsOnHomePage": "",
+        "showAds": "true",
+        "adTarget": ""
+      }
+    },
+    {
+      "weather": {
+        "general": {
+          "enabled": "true",
+          "showAds": "true"
+        },
+        "wsi": {
+          "memberId": "",
+          "serviceId": "",
+          "mapId": "",
+          "sdkKey": ""
+        },
+        "severeWeather": {
+          "enabled": "true",
+          "fgColor": "",
+          "bgColor": ""
+        },
+        "conditions": {
+          "basic": {
+            "enabled": "true",
+            "fgColor": "",
+            "bgColor": ""
+          },
+          "detailed": {
+            "enabled": "true",
+            "fgColor": "",
+            "bgColor": "",
+            "conditions": "Feels Like, Humidity, Wind Speed, Pressure"
+          },
+          "sunMoon": {
+            "enabled": "true",
+            "fgColor": "",
+            "bgColor": ""
+          }
+        },
+        "textForecast": {
+          "enabled": "true",
+          "feedUrl": "",
+          "fgColor": "",
+          "bgColor": ""
+        },
+        "dailyForecast": {
+          "enabled": "true",
+          "feedUrl": "",
+          "fgColor": "",
+          "bgColor": ""
+        },
+        "hourlyForecast": {
+          "enabled": "true",
+          "feedUrl": "",
+          "fgColor": "",
+          "bgColor": ""
+        },
+        "videoForecast": {
+          "enabled": "true",
+          "feedUrl": "",
+          "fgColor": "",
+          "bgColor": ""
+        },
+        "interactiveRadar": {
+          "enabled": "true",
+          "fgColor": "",
+          "bgColor": ""
+        },
+        "weatherNews": {
+          "enabled": "true",
+          "feedUrl": "",
+          "fgColor": "D60C0C",
+          "bgColor": ""
+        },
+        "weatherImages": {
+          "enabled": "true",
+          "feedUrl": "",
+          "fgColor": "",
+          "bgColor": ""
+        },
+        "additionalOptions": {
+          "disableWeatherLinkInBranding": "false",
+          "hideHilo": "false"
+        },
+        "weatherLocations": [
+          {
+            "name": "",
+            "code": "",
+            "zipCode": "",
+            "latitude": "",
+            "longitude": "",
+            "altitude": "20000"
+          }
+        ]
+      }
+    },
+    {
+      "traffic": {
+        "enabled": "true",
+        "defaultCenterLat": "",
+        "defaultCenterLong": "",
+        "defaultAltitude": "55000",
+        "defaultOverlays": "TrafficIncidents,TrafficFlows",
+        "defaultLayer": "Radar"
+      }
+    }
+  ],
+  "video": {
+    "closedCaptionUrl": "",
+    "liveVideoUrl": ""
+  },
+  "connect": {
+    "newsTipEmail": "",
+    "sharePhotoEmail": "",
+    "bugReportEmail": "news-app-support@franklyinc.com",
+    "callUsPhone": "",
+    "aboutUsUrl": "",
+    "privacyPolicyUrl": "",
+    "tosUrl": "",
+    "facebook": {
+      "facebookAppId": "",
+      "facebookSecret": "",
+      "facebookUsername": ""
+    },
+    "twitterhandle": "",
+    "instagramUsername": "",
+    "blogUrl": "",
+    "secondaryBlogUrl": "",
+    "ugcUrl": ""
+  },
+  "storeAccounts": {
+    "apple": {
+      "userId": "",
+      "password": "passwdddddd"
+    },
+    "googlePlay": {
+      "userId": "",
+      "password": "passwd"
+    },
+    "roku": {
+      "userId": "",
+      "password": "passwd"
+    },
+    "amazon": {
+      "userId": "",
+      "password": "passwd"
+    }
+  },
+  "theme": {
+    "name": "",
+    "style": {
+      "fgColor1": "FFFFFF",
+      "fgColor2": "543b3b",
+      "bgColor1": "303030",
+      "bgColor2": "303030",
+      "breakingNewsColor": "290d0d",
+      "font1": "Serif / Sans Serif",
+      "headerFontColor": "303030",
+      "weatherForegroundColor": "a66363",
+      "weatherBackgroundColor": "2b3952"
+    },
+    "merged": "true"
+  },
+  "menu": [
+    {
+      "title": "New item test",
+      "type": "link",
+      "viewLayout": "web-link",
+      "itemsInHomePage": "5",
+      "showAds": "true",
+      "adTarget": "http://google.com.vn",
+      "headerFontColor": "303030",
+      "feed": {
+        "url": "http://google.com.vn",
+        "itemQuerySuffix": ""
+      },
+      "openInBrowser": "true"
+    }
+  ],
+  "updatedAt": "2016-03-21T07:09:05.031Z",
+  "createdAt": "2016-03-21T07:09:05.031Z"
+}

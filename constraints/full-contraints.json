@@ -1,0 +1,20 @@
+{
+  "affiliateName": {"presence": true},
+  "affiliateId": {"presence": true},
+  "manifestUrl": {"presence": true},
+  "manifestUrl": {"presence": true},
+  "name": {"presence": true},
+  "platform": {"presence": true, "length": {"minimum": 3, "maximum": 10}},
+  "appType": {"presence": true},
+  "isActive": {"presence": true},
+  "appType": {"presence": true},
+  "appType": {"presence": true},
+  "premiumFeeds": {
+    "apiKey": {"presence": true}
+  },
+  "pushBehavior": {
+    "enabled": {"presence": true},
+    "defaultProvider": {"presence": true},
+    "urbanAirship.showInbox": {"presence": true}
+  }
+}

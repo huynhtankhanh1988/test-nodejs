@@ -1,0 +1,222 @@
+{
+  "affiliateId": "0",
+  "general": {
+    "affiliateName": "",
+    "affiliateId": "0",
+     "availableApps": [
+      "iOS",
+      "iPad",
+      "Android",
+      "Roku",
+      "Apple TV",
+      "Fire TV"
+    ],
+    "cmsCustomer": false,
+    "isAllowsEnableApp": true
+  },
+  "premiumFeeds": {
+    "apiKey": "",
+    "contextAffiliateId": ""
+  },
+  "search": {
+    "baseUrl": "http://sitesearch.worldnow.com/search",
+    "affiliateIds": "",
+	"resultCount": "50"
+  },
+  "pushBehavior": {
+    "enabled": false,
+    "defaultProvider": "parse",
+    "parse": {
+      "appId": "",
+      "appKey": ""
+    },
+    "urbanAirship": {
+      "appId": "",
+      "appKey": "",
+      "showInbox" : false,
+	  "productionAppSecret" : ""
+    },
+    "channels": [
+    ]
+    },
+  "analytics": {
+    "googleAnalyticsId": ""
+  },
+  "advertising": {
+    "bannerEnabled": true,
+    "network": "DFP",
+    "networkKey": "",
+    "autoHideBanner": true,
+    "inlineRefresh": 60,
+    "inlineLocation": 3,
+    "inlineEnabled" : true,
+    "video": {
+      "VASTUrl": "",
+      "enabled": false,
+      "randomNumberParameter": "&amp;correlator="
+    },
+    "interstitialAds": {
+	  "enabled": false,
+	  "adServer": "DFP",
+	  "adUnitId": "",
+	  "minTimeBetweenAds": 12000,
+	  "interstitialAdSplashEnabled": false,
+	  "interstitialAdFrequency": 1,
+	  "interstitialAdSplashFrequency": 1
+	},
+    "recommendation": {
+      "outbrain": {
+        "enabled": false,
+        "partnerId": "",
+        "outbrainWidgetId": ""
+      }
+    }
+  },
+  "breakingNews": {
+    "feedUrl": "",
+    "appVersion": "list",
+    "itemsOnHomePage": "",
+    "showAds": true,
+    "adTarget": ""
+  },
+  "video": {
+    "closedCaptionUrl": "",
+    "liveVideoUrl": ""
+  } ,
+  "weather": {
+    "general": {
+      "enabled": true,
+      "showAds": true
+    },
+    "wsi": {
+      "memberId": "",
+      "serviceId": "",
+      "mapId": "",
+      "sdkKey": ""
+    },
+    "severeWeather": {
+      "enabled": true,
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "conditions": {
+      "basic": {
+        "enabled": true,
+        "fgColor": "",
+        "bgColor": ""
+      },
+      "detailed": {
+        "enabled": true,
+        "fgColor": "",
+        "bgColor": "",
+        "conditions": "Feels Like, Humidity, Wind Speed, Pressure"
+      },
+      "sunMoon": {
+        "enabled": true,
+        "fgColor": "",
+        "bgColor": ""
+      }
+    },
+    "textForecast": {
+      "enabled": true,
+      "feedUrl": "",
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "dailyForecast": {
+      "enabled": true,
+      "feedUrl": "",
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "hourlyForecast": {
+      "enabled": true,
+      "feedUrl": "",
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "videoForecast": {
+      "enabled": true,
+      "feedUrl": "",
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "interactiveRadar": {
+      "enabled": true,
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "weatherNews": {
+      "enabled": true,
+      "feedUrl": "",
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "weatherImages": {
+      "enabled": true,
+      "feedUrl": "",
+      "fgColor": "",
+      "bgColor": ""
+    },
+    "additionalOptions": {
+      "disableWeatherLinkInBranding": false,
+      "hideHilo": false
+    },
+    "weatherLocations": [
+      {
+        "name": "",
+        "code": "",
+        "zipCode": "",
+        "latitude": "",
+        "longitude": "",
+        "altitude": "20000",
+		"isDefault" : false
+      }
+    ]
+  },
+  "traffic": {
+    "enabled": true,
+    "defaultCenterLat": "",
+    "defaultCenterLong": "",
+    "defaultAltitude": "55000",
+    "defaultOverlays": "TrafficIncidents,TrafficFlows",
+    "defaultLayer": "Radar"
+  },
+  "connect": {
+    "newsTipEmail": "",
+    "sharePhotoEmail": "",
+    "bugReportEmail": "news-app-support@franklyinc.com",
+    "callUsPhone": "",
+    "aboutUsUrl": "",
+    "privacyPolicyUrl": "",
+    "tosUrl": "",
+    "facebook": {
+      "facebookAppId": "",
+      "facebookSecret": "",
+      "facebookUsername": ""
+    },
+    "twitterhandle": "",
+    "instagramUsername": "",
+    "blogUrl": "",
+    "secondaryBlogUrl": "",
+    "ugcUrl": ""
+  },
+  "storeAccounts": {
+    "apple": {
+      "userId": "",
+      "password": ""
+    },
+    "googlePlay": {
+      "userId": "",
+      "password": ""
+    },
+    "roku": {
+      "userId": "",
+      "password": ""
+    },
+    "amazon": {
+      "userId": "",
+      "password": ""
+    }
+  }
+}

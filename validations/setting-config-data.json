@@ -1,0 +1,216 @@
+{
+  "objectId": "EOyFDFfJh7",
+  "affiliateId": "69",
+  "general": {
+    "availableApps": [
+      "string"
+    ],
+    "cmsCustomer": true
+  },
+  "premiumFeeds": {
+    "apiKey": "string",
+    "contextAffiliateId": "string"
+  },
+  "pushBehavior": {
+    "enabled": true,
+    "defaultProvider": "string",
+    "parse": {
+      "appId": "string",
+      "appKey": "string"
+    },
+    "urbanAirship": {
+      "appId": "string",
+      "appKey": "string",
+      "showInbox": true
+    },
+    "channels": [
+      {
+        "id": "string",
+        "name": "string"
+      }
+    ]
+  },
+  "analytics": {
+    "googleAnalyticsId": "string"
+  },
+  "advertising": {
+    "bannerEnabled": true,
+    "network": "string",
+    "networkKey": "string",
+    "autoHideBanner": true,
+    "inlineRefresh": 0,
+    "inlineLocation": 0,
+    "inlineEnabled": true,
+    "video": {
+      "VASTUrl": "string",
+      "enabled": true,
+      "randomNumberParameter": "string"
+    },
+    "interstitialAds": {
+      "enabled": true,
+      "placeholderImageUrl": "string",
+      "adServer": "string",
+      "adUnitId": "string",
+      "triggerEvent": "string",
+      "showPercentage": 0,
+      "minTimeBetweenAds": 0,
+      "maxTimeBetweenAds": 0,
+      "placeholderTimeout": 0
+    },
+    "recommendation": {
+      "outbrain": {
+        "enabled": true,
+        "partnerId": "string",
+        "outbrainWidgetId": "string"
+      }
+    }
+  },
+  "breakingNews": {
+    "feedUrl": "string",
+    "appVersion": "string",
+    "itemsOnHomePage": "string",
+    "showAds": true,
+    "adTarget": "string"
+  },
+  "video": {
+    "closedCaptionUrl": "string",
+    "liveVideoUrl": "string"
+  },
+  "weather": {
+    "general": {
+      "enabled": true,
+      "showAds": true
+    },
+    "wsi": {
+      "memberId": "string",
+      "serviceId": "string",
+      "mapId": "string",
+      "sdkKey": "string"
+    },
+    "severeWeather": {
+      "enabled": true,
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "conditions": {
+      "basic": {
+        "enabled": true,
+        "fgColor": "string",
+        "bgColor": "string"
+      },
+      "detailed": {
+        "enabled": true,
+        "fgColor": "string",
+        "bgColor": "string",
+        "conditions": "string"
+      },
+      "sunMoon": {
+        "enabled": true,
+        "fgColor": "string",
+        "bgColor": "string"
+      }
+    },
+    "textForecast": {
+      "enabled": true,
+      "feedUrl": "string",
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "dailyForecast": {
+      "enabled": true,
+      "feedUrl": "string",
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "hourlyForecast": {
+      "enabled": true,
+      "feedUrl": "string",
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "videoForecast": {
+      "enabled": true,
+      "feedUrl": "string",
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "interactiveRadar": {
+      "enabled": true,
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "weatherNews": {
+      "enabled": true,
+      "feedUrl": "string",
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "weatherImages": {
+      "enabled": true,
+      "feedUrl": "string",
+      "fgColor": "string",
+      "bgColor": "string"
+    },
+    "additionalOptions": {
+      "disableWeatherLinkInBranding": true,
+      "hideHilo": true
+    },
+    "weatherLocations": [
+      {
+        "name": "string",
+        "code": "string",
+        "zipCode": "string",
+        "latitude": "string",
+        "longitude": "string",
+        "altitude": "string"
+      }
+    ]
+  },
+  "traffic": {
+    "enabled": true,
+    "defaultCenterLat": "string",
+    "defaultCenterLong": "string",
+    "defaultAltitude": "string",
+    "defaultOverlays": "string",
+    "defaultLayer": "string"
+  },
+  "connect": {
+    "newsTipEmail": "string",
+    "sharePhotoEmail": "string",
+    "bugReportEmail": "string",
+    "callUsPhone": "string",
+    "aboutUsUrl": "string",
+    "privacyPolicyUrl": "string",
+    "tosUrl": "string",
+    "facebook": {
+      "facebookAppId": "string",
+      "facebookSecret": "string",
+      "facebookUsername": "string"
+    },
+    "twitterhandle": "string",
+    "instagramUsername": "string",
+    "blogUrl": "string",
+    "secondaryBlogUrl": "string",
+    "ugcUrl": "string"
+  },
+  "storeAccounts": {
+    "apple": {
+      "userId": "string",
+      "password": "string"
+    },
+    "googlePlay": {
+      "userId": "string",
+      "password": "string"
+    },
+    "roku": {
+      "userId": "string",
+      "password": "string"
+    },
+    "amazon": {
+      "userId": "string",
+      "password": "string"
+    }
+  },
+  "updatedAt": "2016-04-06T02:19:34.727Z",
+  "createdAt": "2016-04-06T02:19:34.727Z"
+}
