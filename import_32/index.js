@@ -15,7 +15,6 @@
             console.log("ERROR 0");
             res.end(err);
         } else {
-//            res.end(data);
             convertXML2JS(data, function(error, result) {
                 if (error) {
                    console.log("ERROR 1");
@@ -54,7 +53,7 @@
               rs[att] = value;
             }
           }else{
-              if (data[attribute] && Array.isArray(data[attribute])){
+              if (data[attribute] && Array.isArray(data[attribute]) && data[attribute].length > 1){
                 rs[attribute] = convertArray(data[attribute]);
               } else {
                 rs[attribute] = convertNode(data[attribute]);
