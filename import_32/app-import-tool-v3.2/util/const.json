@@ -1,0 +1,8 @@
+{
+  "arrayNode": ["pushSegmentation", "adBehavior", "network", "ad-target", "section", "subsection", "feed",
+    "weather-location", "weather-section", "pushService", "traffic-location"],
+  "numberList": ["_frn-display-count"],
+  "booleanList": ["_enabled", "_frn-banner-ads-enabled", "_frn-inline-ads-enabled", "_frn-preroll-ads-enabled", "_frn-splash-ads-enabled",
+                  "_frn-interstitial-ads-enabled", "_suppress-ads", "_is-default", "_show-radar-in-navigation-menu", "_frn-exclude-from-pager"],
+  "colorList": []
+}

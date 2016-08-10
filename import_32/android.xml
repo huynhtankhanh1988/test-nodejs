@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<client
+        partner-id="89"
+        partner-name="KATC"
+        api-key="sarkestarzian-FranklyApps-wrcb-e"
+        frn-show-category-pager="true"
+        frn-app-config-endpoint="/classes/AppConfig/N0kuTx45L3"
+        frn-app-config-id="wPJuyJsloZ14Rx7rUIk1BLLlpmrVt7rHqD5w3iza"
+        frn-affiliate-id="6">
+
+    <pushBehavior frn-default-provider="airship" inbox-enabled="true">
+        <pushService provider="parse" production-app-id="90VWwcnO75FzHG4iphff8CHSIpEwOzH45oZDtLec" production-app-key="8uqeJO666At1TI286LIwjxo8QVxjlUFuDbrq0j5n"/>
+        <!--<pushService provider="parse" production-app-id="PEssCbsVg9UViMJ5eWHfLlZdfsn2Gz9diTKSr1tD" production-app-key="CeYsnEUr6hTTmNqAWPX5mDky2c9tqUGi1uuOFfMQ"/>-->
+        <!--<pushService provider="parse" production-app-id="3ukZhFl27LWxDZuC8KRrv0wQOZOqs4b3lWGQtxtX" production-app-key="GIXRzCEFLL5o3P9Q3HSZ8aNru5YndPpKWmU7vI2L"/>-->
+        <pushService provider="airship"
+                     production-app-key="1dxnxsI-QKmwXyh-Lqf7ew"
+                     production-app-secret="_1XPKcmPRd-gOCigEZfS8g"
+                     production-gcm-sender="817287100199"/>
+
+        <pushSegmentation
+                tag="Breaking News"
+                title="Breaking News"/>
+
+        <pushSegmentation
+                tag="Top Stories"
+                title="Top Stories"/>
+
+        <pushSegmentation
+                tag="Sports"
+                title="Sports"/>
+
+        <pushSegmentation
+                tag="politics"
+                title="Politics"/>
+
+    </pushBehavior>
+
+    <brandCustomization
+            bg-color-1="#FF037B8C"
+            fg-color-1="#FFFFFF"
+            font-1="merriweather_bold"
+            font-2="averta_regular" />
+
+    <frn-search base-url="http://sitesearch.worldnow.com/search"
+                result-count="42"
+                affiliate-ids="6,82,92,147,728,750,1220"/>
+
+    <recommendation
+            partner-key="RAYCO11FP41B8F6E4QIC76PC6"
+            widget-id="SDK_4"/>
+
+    <adBehavior frn-banner-ads-enabled="true"
+                frn-inline-ads-enabled="true"
+                frn-preroll-ads-enabled="true"
+                frn-splash-ads-enabled="true"
+                frn-interstitial-ads-enabled="false"
+                frn-article-interstitial-ad-frequency="5"
+                frn-section-interstitial-ad-frequency="3"
+                frn-splash-ad-trigger-event="cold-launch-and-foreground"
+                frn-splash-ad-show-duration="3000"
+                frn-splash-ad-timeout="20000"
+                frn-splash-ad-show-percentage="50"
+                frn-splash-ad-max-time-between-ads="120000"
+                frn-splash-ad-min-time-between-ads="20000"
+                url="http://ad.doubleclick.net/adi/wn.loc.katc.ext/android;sz=320x50"
+                video-preroll-url="https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&amp;iu=/124319096/external/single_ad_samples&amp;ciu_szs=300x250&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vast&amp;unviewed_position_start=1&amp;cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear"
+                random-number-parameter=";ord="
+                frn-inline-ad-key="/43459271/loc-mob/wrcb/app-news">
+        <!--<network
+            type="verve-dfp-mediation"
+            key="/6499/example/somevervekey"/>-->
+        <network
+                type="verve-dfp-mediation"
+                key="/11027047/vrvadmobint"
+                partner-key="adsdkexample"/>
+
+        <ad-target
+                network-type="verve-dfp-mediation"
+                target="102"/>
+    </adBehavior>
+
+
+    <settings news-tip-email="edison@franklychat.com"
+              share-photo-email="edison@franklychat.com"
+              bug-report-email="edison@franklychat.com"
+              call-us-phone="415-222-3333"
+              about-us-url="http://franklyinc.com/about"
+              privacy-policy-url="http://franklyinc.com/privacy-policy"
+              tos-url="http://franklyinc.com/terms"/>
+
+    <reportingBehavior enable="true"
+                       provider="google"
+                       id="UA-65350925-2"/>
+
+    <facebook fb-app-id="8675309" />
+
+    <wsi member-id="1153"
+         map-id="0002"
+         sdk-key="D780A3A1-57C7-4004-8093-F96F600B3397"
+         service-id="576347879"/>
+
+    <traffic-map default-center-lat="47.61"
+                 default-center-long="-122.33"
+                 default-altitude="55000"
+                 default-overlays="Traffic Incidents,Storm Tracks"
+                 default-layer="Traffic"
+                 suppress-ads="false"/>
+
+    <weather suppress-ads="true" show-radar-in-navigation-menu="true">
+        <weather-location name="San Jose"
+                          weather-code="USNY0996"
+                          zip-code="95123"
+                          is-default="true"
+                          map-display-altitude="55000"
+                          center-point-latitude="37.2499392"
+                          center-point-longitude="-121.8505568"/>
+        <weather-location name="Rockridge"
+                          weather-code="0036DEF"
+                          zip-code="94403"
+                          is-default="false"
+                          map-display-altitude="55000"
+                          center-point-latitude="47.61"
+                          center-point-longitude="-122.33"/>
+        <weather-section name="severe-weather-alert"
+                         foreground-color="#ffffff"
+                         background-color="#026B54"/>
+        <weather-section name="conditions"
+                         foreground-color="#ffffff"
+                         background-color="#02356b"/>
+        <weather-section name="detailed-readings"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"
+                         conditions-to-display="Feels Like, Humidity, Wind Speed, Pressure, Wind Chill, Heat Index, Visibility, Wind Gust Speed, Wind Direction, 3 Hour Precipitation, 6 Hour Precipitation, 24 Hour Precipitation, Precipitation"/>
+        <weather-section name="sun-and-moon"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"/>
+        <weather-section name="todays-forecast"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"
+                         url="http://wnow.ddev1.worldnow.com/weather?clienttype=rssweather"/>
+        <weather-section name="hourly-forecasts"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"/>
+        <weather-section name="daily-forecasts"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"/>
+        <weather-section name="video-report"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"
+                         url="http://developer.worldnow.com/feed/categories/132414/clips?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+                         captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        <weather-section name="radar"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"
+                         suppress-ads="false"
+                         layer="Radar (Precipitation)"/>
+        <!--<weather-section name="weather-news"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"
+                         url="http://developer.worldnow.com/feed/categories/123971/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;alt=json"/>
+        <weather-section name="station-graphics"
+                         foreground-color="#ffffff"
+                         background-color="#02356B"!-->/>
+    </weather>
+
+    <section title="Home"
+             type="homepage"
+             suppress-ads="false">
+        <ad-target
+                network-type="verve-dfp-mediation"
+                target="50"/>
+    </section>
+
+    <section title="Breaking News"
+             frn-layout-type="itemVerticalList"
+             item-per-feed="20"
+             frn-category-background-color="#96181c"
+             type="breaking">
+        <feed item-query-suffix=""
+              frn-premium-url="http://developer.worldnow.com/feed/categories/123974/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json"
+              captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+    </section>
+
+    <section title="Top Stories"
+             frn-layout-type="heroCarousel"
+             frn-display-count="5"
+             frn-target-display="newsItemList"
+             frn-category-highlight-color="#878787"
+             suppress-ads="true"
+             frn-category-background-color="#ffffff">
+        <ad-target
+                network-type="verve-dfp-mediation"
+                target="99"/>
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/123971/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json"
+              captions-url="http://katc.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+
+        <subsection frn-display-count="3"
+                    title="Ooltewah Assault"
+                    items-per-feed="20" >
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/309080/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="School Patrol"
+                    items-per-feed="20" >
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/129649/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Crime Stoppers"
+                    items-per-feed="20" >
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/129664/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Forever Family">
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/132931/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Eye On Health">
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/129694/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Restaurant Report Card">
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/129711/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="3 Plus You">
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/195151/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Thinking out loud">
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/302649/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+                  captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+        </subsection>
+    </section>
+
+    <section
+            title="News Categories"
+            frn-layout-type="categoryCarousel"
+            frn-target-display="newsItemList"
+            frn-display-count="5">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/123972/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json" />
+        <subsection
+                title="Top Stories... So Toppy"
+                frn-background-image-url="https://www.sciencerecorder.com/wp-content/uploads/topstories-of-the-week.jpg"
+                frn-title-image-url="https://cdn4.iconfinder.com/data/icons/line-icons-3/256/book_2-128.png"
+                frn-target-display="newsItemList"
+                frn-display-count="5">
+            <feed
+                    frn-premium-url="http://developer.worldnow.com/feed/categories/123971/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json"/>
+            <subsection
+                    title="Ooltewah Assault"
+                    frn-target-display="newsItemList"
+                    frn-display-count="3">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/309080/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+            <subsection
+                    title="School Patrol"
+                    frn-display-count="3"
+                    frn-target-display="newsItemList">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/129649/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+            <subsection
+                    title="Crime Stoppers"
+                    frn-display-count="3"
+                    frn-target-display="newsItemList">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/129664/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+            <subsection
+                    title="Forever Family"
+                    frn-display-count="3"
+                    frn-target-display="newsItemList">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/132931/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+            <subsection
+                    title="Eye On Health"
+                    frn-display-count="3"
+                    frn-target-display="newsItemList">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/129694/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+            <subsection
+                    title="Restaurant Report Card"
+                    frn-display-count="3"
+                    frn-target-display="newsItemList">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/129711/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+            <subsection
+                    title="3 Plus You"
+                    frn-display-count="3"
+                    frn-target-display="newsItemList">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/195151/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+            <subsection
+                    title="Thinking out loud"
+                    frn-display-count="3"
+                    frn-target-display="newsItemList">
+                <feed
+                        frn-premium-url="http://developer.worldnow.com/feed/categories/302649/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+            </subsection>
+        </subsection>
+        <subsection
+                title="Video"
+                frn-background-image-url="http://blogs.adobe.com/captivate/files/2013/08/Effortless-video-creation.jpg"
+                frn-title-image-url="http://cdn.mysitemyway.com/icons-watermarks/simple-black/iconathon/iconathon_story-time/iconathon_story-time_simple-black_128x128.png"
+                frn-display-count="3"
+                frn-target-display="newsItemList">
+            <feed
+                    frn-premium-url="http://developer.worldnow.com/feed/categories/132414/clips?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"/>
+        </subsection>
+        <subsection
+                title="Sports"
+                frn-background-image-url="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg"
+                frn-title-image-url="https://cdn4.iconfinder.com/data/icons/line-icons-3/256/book_2-128.png"
+                frn-display-count="3"
+                frn-target-display="newsItemList">
+            <feed
+                    frn-premium-url="http://developer.worldnow.com/feed/categories/128863/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"/>
+        </subsection>
+        <subsection
+                title="Entertainment"
+                frn-background-image-url="http://foglers.com/system/images/364/original/sports_entertainment.jpg?1366064108"
+                frn-display-count="3"
+                frn-target-display="newsItemList">
+            <feed
+                    frn-premium-url="http://developer.worldnow.com/feed/categories/73801/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"/>
+        </subsection>
+    </section>
+
+    <section title="Video"
+             frn-layout-type="categoryBlock"
+             frn-background-image-url="http://blogs.adobe.com/captivate/files/2013/08/Effortless-video-creation.jpg"
+             frn-title-image-url="https://s3.amazonaws.com/frankly-design/assets/traffic_report.png"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed frn-premium-url="http://developer.worldnow.com/feed/categories/132414/clips?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              title="News Video"
+              url="http://www.kwwl.com/category/132414/pop_video_top?clienttype=mrss"
+              captions-url="http://kwwl.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>
+    </section>
+
+    <section title="Live Video"
+             frn-display-count="3"
+             frn-target-display="externalBrowser">
+        <webView url="http://wnow.images.worldnow.com/apps/katc_live_vid_story_android.html"/>
+    </section>
+
+    <section title="Sports"
+             frn-layout-type="categoryBlock"
+             frn-background-image-url="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/128863/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              captions-url="http://kwwl.images.worldnow.com/metadata/{MEDIA_ID}.ttml"
+              url="http://www.kwwl.com/category/128863/sports?clienttype=rss"/>
+    </section>
+
+    <section title="Entertainment"
+             frn-display-count="3"
+             items-per-feed="12"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/73801/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              captions-url="http://kwwl.images.worldnow.com/metadata/{MEDIA_ID}.ttml"
+              url="http://www.katc.com/category/73801/entertainment?clienttype=rss"/>
+    </section>
+
+    <section title="Slideshow"
+             frn-layout-type="itemVerticalList"
+             frn-display-count="1"
+             frn-target-display="newsItemList">
+        <feed frn-feed-type="image-slideshow"
+              url="http://api.celljournalist.com/Syndication/MediaRSSRaycom?PartitionId=28bbaf6f-1597-40fd-8323-26aea82b88d8&amp;type=channel&amp;channel-name=Fall%20Leaves&amp;max-items=50&amp;mf=1"/>
+
+        <subsection frn-display-count="1"
+                    title="Honoring Veterans">
+            <feed frn-feed-type="image-slideshow"
+                  frn-premium-url="http://developer.worldnow.com/feed/widgets/172952?apikey=wbtv-verve-e41baa380641ebb6cdc60&amp;context-affiliate-id=92&amp;alt=json"/>
+        </subsection>
+
+        <subsection frn-display-count="10"
+                    title="Fall Foliage"
+                    items-per-feed="20" >
+            <feed frn-feed-type="image-slideshow"
+                  url="http://api.celljournalist.com/Syndication/MediaRSSRaycom?PartitionId=28bbaf6f-1597-40fd-8323-26aea82b88d8&amp;type=channel&amp;channel-name=Fall%20Leaves&amp;max-items=50&amp;mf=1"/>
+        </subsection>
+
+        <subsection frn-display-count="1"
+                    title="SC Flooding"
+                    items-per-feed="20" >
+            <feed frn-feed-type="image-slideshow"
+                  frn-premium-url="http://developer.worldnow.com/feed/widgets/170538?apikey=wbtv-verve-e41baa380641ebb6cdc60&amp;context-affiliate-id=92&amp;alt=json"/>
+        </subsection>
+
+        <subsection frn-display-count="1"
+                    title="Weather Pics"
+                    items-per-feed="20" >
+            <feed frn-feed-type="image-slideshow"
+                  url="http://api.celljournalist.com/Syndication/MediaRSSRaycom?PartitionId=28bbaf6f-1597-40fd-8323-26aea82b88d8&amp;type=channel&amp;channel-name=weather&amp;max-items=50&amp;mf=1"/>
+        </subsection>
+
+    </section>
+
+    <section title="Health"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/165073/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+              captions-url="http://kwwl.images.worldnow.com/metadata/{MEDIA_ID}.ttml"
+              url="http://www.katc.com/category/165073/health?clienttype=rss"/>
+    </section>
+
+    <section title="Business"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/13537/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+              captions-url="http://kwwl.images.worldnow.com/metadata/{MEDIA_ID}.ttml"
+              url="http://www.katc.com/category/13537/business?clienttype=rss"/>
+    </section>
+
+    <section title="Politics"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/13571/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
+              captions-url="http://kwwl.images.worldnow.com/metadata/{MEDIA_ID}.ttml"
+              url="http://www.katc.com/category/13571/politics?clienttype=rss"/>
+    </section>
+
+    <section title="Subcategory Demo"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/123971/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json"/>
+
+        <subsection frn-display-count="3"
+                    title="Subcategory 1"
+                    items-per-feed="20" >
+            <feed frn-premium-url="http://api.brightcove.com/services/library?command=find_playlist_by_id&amp;playlist_id=4791479918001&amp;output=mrss&amp;playlist_fields=id%2Cname%2CshortDescription%2CplayListType%2Cvideos&amp;video_fields=id%2Cname%2ClinkURL%2Crenditions&amp;media_delivery=http&amp;token=6tvmzRttnHsP8Ti6DBo6qyoIix9HkSg6vHLnqwAemrXim3gp5OAHlQ.."/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Subcategory 2"
+                    items-per-feed="20" >
+            <feed frn-premium-url="http://api.brightcove.com/services/library?command=find_playlist_by_id&amp;playlist_id=4791479917001&amp;output=mrss&amp;playlist_fields=id%2Cname%2CshortDescription%2CplayListType%2Cvideos&amp;video_fields=id%2Cname%2ClinkURL%2Crenditions&amp;media_delivery=http&amp;token=6tvmzRttnHsP8Ti6DBo6qyoIix9HkSg6vHLnqwAemrXim3gp5OAHlQ.."/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Subcategory 3"
+                    items-per-feed="20" >
+            <feed frn-premium-url="http://api.brightcove.com/services/library?command=find_playlist_by_id&amp;playlist_id=4458743844001&amp;output=mrss&amp;playlist_fields=id%2Cname%2CshortDescription%2CplayListType%2Cvideos&amp;video_fields=id%2Cname%2ClinkURL%2Crenditions&amp;media_delivery=http&amp;token=6tvmzRttnHsP8Ti6DBo6qyoIix9HkSg6vHLnqwAemrXim3gp5OAHlQ.."/>
+        </subsection>
+
+        <subsection frn-display-count="3"
+                    title="Subcategory 4">
+            <feed frn-premium-url="http://developer.worldnow.com/feed/categories/13571/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"/>
+        </subsection>
+
+    </section>
+
+    <section title="UA Breaking News"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310222/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310222/ua-breaking-news?clienttype=rss"/>
+    </section>
+
+    <section title="UA Top Stories"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310641/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310641/ua-top-stories?clienttype=rss"/>
+    </section>
+
+    <section title="UA Business"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310647/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310647/ua-business?clienttype=rss"/>
+    </section>
+
+    <section title="UA Entertainment"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310645/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310645/ua-entertainment?clienttype=rss"/>
+    </section>
+
+    <section title="UA Health"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310650/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310650/ua-health?clienttype=rss"/>
+    </section>
+
+    <section title="UA Politics"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310648/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310648/ua-politics?clienttype=rss"/>
+    </section>
+
+    <section title="UA Social"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310643/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310643/ua-social?clienttype=rss"/>
+    </section>
+
+    <section title="UA Sports"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310642/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310642/ua-sports?clienttype=rss"/>
+    </section>
+
+    <section title="UA Video"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310481/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310481/ua-video?clienttype=rss"/>
+    </section>
+
+    <section title="UA World News"
+             frn-display-count="3"
+             items-per-feed="20"
+             frn-target-display="newsItemList">
+        <feed item-query-suffix="&amp;clienttype=rssstory&amp;config=media"
+              frn-premium-url="http://developer.worldnow.com/feed/categories/310644/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;alt=json"
+              url="http://www.katc.com/category/310644/ua-world-news?clienttype=rss"
+              frn-target-display="newsItemList" />
+    </section>
+
+    <section title="About"
+             frn-display-count="3"
+             icon-url="information.png"
+             icon-res="about"
+             frn-target-display="internalBrowser"
+             suppress-ads="true">
+        <webView url="http://mobile.mobdub.com/katc_about.html"/>
+    </section>
+</client>
