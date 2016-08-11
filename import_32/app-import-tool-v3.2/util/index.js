@@ -11,7 +11,7 @@ var Util = function() {
         var key = '';
         var value = '';
         for (var attribute in data) {
-            // check invalid sttribute
+            // remove unsuitable attributes
             if (attribute == "__text" || attribute == "toString" ) {
                 delete data[attribute];
                 continue;
@@ -25,11 +25,9 @@ var Util = function() {
                 }
                 rs[attribute] = value;
             } else {
-
                 if (constant.arrayNode.indexOf(attribute) < 0) {
                     rs[attribute] = convertNode(data[attribute]);
                 } else  {
-//                    console.log("attribute>>> " + attribute);
                     rs[attribute] = convertArray(data[attribute], attribute);
                 }
             }
@@ -47,10 +45,7 @@ var Util = function() {
             }
             return result;
         } else {
-            console.log("attribute>>> " + attribute);
-           var a = convertNode(data);
-
-            result.push(a);
+            result.push(convertNode(data));
             return result
         }
     };
