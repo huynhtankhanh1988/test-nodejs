@@ -1,3 +1,6 @@
 {
-
+  "weatherSection": ["severe-weather-alert", "conditions",
+    "weather-news", "station-graphics",
+    "todays-forecast", "detailed-readings",
+    "hourly-forecasts", "radar", "sun-and-moon", "daily-forecasts", "video-report"]
 }

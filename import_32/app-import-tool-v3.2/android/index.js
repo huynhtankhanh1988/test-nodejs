@@ -238,9 +238,99 @@ var AndroidConverter = function() {
         weather['weatherLocations'] = weatherLocations;
 
        // weather sections
+       var mappedSection = [];
+       mappedSection = util.mappingArray(data['weather-section'], mapping['weatherSection']);
+       console.log(JSON.stringify(mappedSection));
+       combineWeatherSections(weather, mappedSection);
+
+       return weather;
+    }
+
+    function combineWeatherSections(weather, data) {
+        // serve weather
+        var serverWeather = {};
+        serverWeather = getWeatherSection('severe-weather-alert', data);
+        weather['severeWeather'] = serverWeather;
+
+        // initialize conditions
+        var conditionsSection = {};
+
+        //basic
+        var basicSection = {};
+        basicSection = getWeatherSection('conditions', data)
+        conditionsSection['basic'] = basicSection;
+
+        //detail
+        var detailSection = getWeatherSection('detailed-readings', data);
+        conditionsSection['detailed'] = detailSection;
+
+        //sunMoon
+        var sunMoonSection = getWeatherSection('sun-and-moon', data);
+        conditionsSection['sunMoon'] = sunMoonSection;
+
+        //setting conditions
+        weather['conditions'] = conditionsSection;
+
+        // textForecast
+        var textForecastSection = getWeatherSection('todays-forecast', data);
+        weather['textForecast'] = textForecastSection;
+
+        // daily forecast
+        var dailyForecastSection = getWeatherSection('daily-forecasts', data);
+        weather['dailyForecast'] = dailyForecastSection;
+
+        // hourly forecast
+        var hourlyForecastSection = getWeatherSection('hourly-forecasts', data);
+        weather['hourlyForecast'] = hourlyForecastSection;
+
+        // video forecast
+        var videoForecastSection = getWeatherSection('video-report', data);
+        weather['videoForecast'] = videoForecastSection;
+
+        //interactive Radar
+        var radarSection = getWeatherSection('radar', data);
+        weather['interactiveRadar'] = radarSection;
+
+        //weather news
+        var weatherNewsSection = getWeatherSection('weather-news', data);
+        weather['weatherNews'] = weatherNewsSection;
+
+        // weather images
+        var weatherImagesSection = getWeatherSection('station-graphics', data);
+        weather['weatherImages'] = weatherImagesSection;
 
 
-        return weather;
+    }
+
+    /**
+    	Get weather section by type
+    */
+    function getWeatherSection(type, weatherSectionArr) {
+    	var fullWeatherSectionFields = ['enabled', 'fgColor', 'bgColor', 'conditions', 'feedUrl', 'layer'];
+        var result = {};
+        var weatherItem = {};
+
+        //find the appropriate section
+        for (var i = 0 ; i < weatherSectionArr.length; i++) {
+            if (weatherSectionArr[i].name === type) {
+                weatherItem = weatherSectionArr[i];
+                break;
+            }
+        }
+
+    	//build data for the section
+    	if(Object.keys(weatherItem).length > 0) {
+    		fullWeatherSectionFields.forEach(function(field) {
+    			if (weatherItem[field]) {
+    				result[field] =  weatherItem[field];
+    			}
+    		});
+    		result['enabled'] = true;
+    	} else {
+    		result['enabled'] = false;
+    	}
+
+        return result;
     }
 
     function combineWeatherLocation(data) {
