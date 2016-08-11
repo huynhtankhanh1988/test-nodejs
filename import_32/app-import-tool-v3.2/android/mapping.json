@@ -1,4 +1,49 @@
 {
-
-
+  "style": {
+    "_fg-color-1": "fgColor1",
+    "_bg-color-1": "bgColor1",
+    "_font-1": "font1",
+    "_font-2": "font2"
+  },
+  "search": {
+    "_base-url": "baseUrl",
+    "_result-count": "resultCount",
+    "_affiliate-ids": "affiliateIds"
+  },
+  "wsi": {
+    "_member-id": "memberId",
+    "_map-id": "mapId",
+    "_sdk-key": "sdkKey",
+    "_service-id": "serviceId"
+  },
+  "weather": {
+   "_suppress-ads": "showAds",
+    "_show-radar-in-navigation-menu": "showRadarInNavMenu"
+  },
+  "weatherLocation": {
+    "_name": "name",
+    "_weather-code": "code",
+    "_zip-code": "zipCode",
+    "_is-default": "isDefault",
+    "_map-display-altitude": "altitude",
+    "_center-point-latitude": "latitude",
+    "_center-point-longitude": "longitude"
+  },
+  "weatherSection": {
+    "_name": "name",
+    "_foreground-color": "fgColor",
+    "_background-color": "bgColor",
+    "_conditions-to-display": "conditions",
+    "_url": "feedUrl",
+    "_layer": "layer"
+  },
+  "connect": {
+    "_news-tip-email": "newsTipEmail",
+    "_share-photo-email": "sharePhotoEmail",
+    "_bug-report-email": "bugReportEmail",
+    "_call-us-phone": "callUsPhone",
+    "_about-us-url": "aboutUsUrl",
+    "_privacy-policy-url": "privacyPolicyUrl",
+    "_tos-url": "tosUrl"
+  }
 }

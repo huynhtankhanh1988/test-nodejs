@@ -30,7 +30,7 @@ var XmlConverter = function() {
                 if (result.client) {// checking root tag must be 'client'
                     var outputJson = {};
                     outputJson = x2js.xml2js(xmlString);
-                    console.log(JSON.stringify(outputJson));
+//                    console.log(JSON.stringify(outputJson));
                     var data = util.restructureManifestJSON(outputJson.client);
 
                     //START VALIDATION
