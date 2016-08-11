@@ -104,6 +104,9 @@ var AndroidConverter = function() {
             connect['facebook'] = facebook;
             setting['connect'] = connect;
 
+            // menu
+            var menuData = preJson['section'];
+            itemConfig['menu'] = menuData;
             //
             itemConfig['setting'] = setting;
             itemConfig['theme'] = theme;
