@@ -19,15 +19,38 @@ var AndroidConverter = function() {
             theme = combineStyle(preJson['brandCustomization']);
 
             //SETTING
+            //search
+            var search = {};
+            search = combineSearch(preJson['frn-search']);
+            setting['search'] = search;
+
+            // pushBehavior
+            var pushBehavior = {};
+            if (preJson['pushBehavior']) {
+                pushBehavior = combinePushBehavior(preJson['pushBehavior']);
+            } else {
+                pushBehavior['enabled'] = false;
+            }
+            setting['pushBehavior'] = pushBehavior;
+
             //analytics
             var analytics = {};
             analytics = combineReportingBehavior(preJson['reportingBehavior']);
             setting['analytics'] = analytics;
 
-            //search
-            var search = {};
-            search = combineSearch(preJson['frn-search']);
-            setting['search'] = search;
+            // Recommendation
+            var recommendation = {};
+            recommendation = combineRecommendation(preJson['recommendation']);
+
+            //advertising
+            var advertising = {};
+            var adBehavior = {};
+
+            adBehavior = combineAdvertising(preJson['adBehavior']);
+            advertising['adBehavior'] = adBehavior;
+
+            advertising['recommendation'] = recommendation;
+            setting['advertising'] = advertising;
 
             //premium feeds
             var premiumFeeds = {};
@@ -70,15 +93,6 @@ var AndroidConverter = function() {
                 setting['premiumFeeds'] = premiumFeeds;
             }
 
-            // pushBehavior
-            var pushBehavior = {};
-            if (preJson['pushBehavior']) {
-                pushBehavior = combinePushBehavior(preJson['pushBehavior']);
-            } else {
-                pushBehavior['enabled'] = false;
-            }
-            setting['pushBehavior'] = pushBehavior;
-
             //traffic
             var traffic = {};
             traffic =  combineTraffic(preJson['traffic-map']);
@@ -106,28 +120,60 @@ var AndroidConverter = function() {
 
             // menu
             var menuData = preJson['section'];
-            itemConfig['menu'] = menuData;
-            //
-            itemConfig['setting'] = setting;
+            deleteMenuByType("homepage", menuData);
+            deleteMenuByType("breaking", menuData);
+            var menu = [];
+            menu = combineMenu(menuData);
+
+            //Item config
             itemConfig['theme'] = theme;
+            itemConfig['setting'] = setting;
+            itemConfig['menu'] = menu;
+
             return itemConfig;
         } catch (e) {
             return {code: 500, 'message': e.message};
         }
     }
 
-    function combineStyle(data) {
+    function combineMenu(data) {
         try {
-        var theme = {};
-        if (!data || Object.keys(data).length == 0) {
-            return {};
+            if (!data || Object.keys(data).length == 0) {
+                return null;
+            }
+            var mappedData = util.mappingArray(data, mapping['menu']);
+
+            return mappedData;
+        }  catch (e) {
+            e.message = "MENU: " + e.message;
+            throw e;
         }
-        var mappedData = util.mappingNode(data, mapping['style']);
+    }
 
-        theme['name'] = '';
-        theme['style'] = mappedData;
+    /**
+    	Delete a menu in list by type
+    */
+    function deleteMenuByType(type, menuItems) {
+    	for (var i = 0; i < menuItems.length; i ++) {
+    		var item =  menuItems[i];
+    		if (item['_type'] === type.toLowerCase()) {
+    			 menuItems.splice(i, 1);
+            }
+    	}
+    }
 
-        return theme;
+    function combineStyle(data) { //NEED UPDATE WHEN INTEGRATE TO CALYPSO
+        try {
+            var theme = {};
+            if (!data || Object.keys(data).length == 0) {
+                return {};
+            }
+            var mappedData = util.mappingNode(data, mapping['style']);
+
+            theme['name'] = '';
+            theme['style'] = mappedData;
+
+            return theme;
         }  catch (e) {
             e.message = "STYLE: " + e.message;
             throw e;
@@ -150,6 +196,27 @@ var AndroidConverter = function() {
         }
     }
 
+    function combineRecommendation(data) {
+        try {
+            var recommendation = {};
+            var outbrain = {};
+            if (!data || Object.keys(data).length == 0) {
+                outbrain['enabled'] = false;
+                recommendation['outbrain'] = outbrain;
+                return recommendation;
+            }
+
+            outbrain = util.mappingNode(data, mapping['recommendation']);
+            recommendation['outbrain'] = outbrain;
+
+            return recommendation;
+        }
+        catch (e) {
+            e.message = "REPORT BEHAVIOR: " + e.message;
+            throw e;
+        }
+    }
+
     function combineSearch (data) {
         try {
             if (!data || Object.keys(data).length == 0) {
@@ -163,6 +230,21 @@ var AndroidConverter = function() {
             e.message = "SEARCH: " + e.message;
             throw e;
         }
+    }
+
+    function combineAdvertising(data) {
+        try {
+            if (!data || Object.keys(data).length == 0) {
+                return {};
+            }
+             var mappedData = [];
+             mappedData = util.mappingArray(data, mapping['adBehavior']);
+             return mappedData;
+        } catch (e) {
+            e.message = "ADVERTISING: " + e.message;
+            throw e;
+        }
+
     }
 
     function combinePushBehavior(data) {
@@ -372,7 +454,7 @@ var AndroidConverter = function() {
         weather['weatherImages'] = weatherImagesSection;
 
         // weather layout
-        //FIRST: Build the weather layout from section of imported file(enabled sections)
+        //FIRST: Build the weather layout from sections of imported file(enabled sections)
         var weatherLayout = [];
         weatherLayout = buildWeatherLayout(sectionsArray);
 

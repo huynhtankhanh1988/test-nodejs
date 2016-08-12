@@ -75,7 +75,7 @@ var Util = function() {
             } else {
                 key = mapping[attribute];
                 if (key) {
-                    if (arrayNode.indexOf(attribute) < 0) {
+                    if (constant.arrayNode.indexOf(attribute) < 0) {
                         rs[key] = doMappingNode(data[attribute], mapping);
                     } else {
                         if (Array.isArray(data[attribute])) {
