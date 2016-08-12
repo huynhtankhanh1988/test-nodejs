@@ -1,11 +1,17 @@
 {
   "style": {
     "_fg-color-1": "fgColor1",
+    "_fg-color-2": "fgColor2",
     "_bg-color-1": "bgColor1",
     "_font-1": "font1",
-    "_font-2": "font2"
+    "_font-2": "font2",
+    "_breaking-news-color": "breakingNewsColor"
   },
   "search": {
+    "ad-target": "adTarget",
+    "_network-type": "networkType",
+    "_target": "target",
+    "_suppress-ads": "showAds",
     "_base-url": "baseUrl",
     "_result-count": "resultCount",
     "_affiliate-ids": "affiliateIds"
@@ -90,6 +96,7 @@
     "_suppress-ads": "showAds",
     "feed": "feed",
     "_frn-background-image-url": "backgroundImageUrl",
+    "_frn-title-image-url": "titleImageUrl",
     "_frn-layout-type": "layoutType",
     "_frn-display-count": "itemsInHomePage",
     "_frn-category-highlight-color": "headerFontColor",

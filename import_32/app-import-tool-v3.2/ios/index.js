@@ -104,7 +104,7 @@ var IOSConverter = function() {
 
             //weather
             var weather = {};
-            weather = combineWeather(preJson['weather'], wsi);
+            weather = combineWeather(preJson['weather-v2'], wsi);
             setting['weather'] = weather;
 
             //connect
@@ -256,28 +256,22 @@ var IOSConverter = function() {
             }
 
             var pushBehavior = {};
-            var item = {};
             var parse = {};
             var urbanAirship = {};
 
             //push service
             pushBehavior['enabled'] = true;
-            pushBehavior['defaultProvider'] = data["_frn-default-provider"];
-            if (data['pushService'] && data['pushService'].length > 0) {
-                for (var index = 0; index < data['pushService'].length; index++) {
-                    item = {};
-                    item = data['pushService'][index];
-                    if (item && item['_provider'] == "parse") {
-                        parse['appId'] = item["_production-app-id"];
-                        parse['appKey'] = item["_production-app-key"];
-                    } else if (item && item['_provider'] == "airship") {
-                        urbanAirship['appId'] = item["_production-app-id"];
-                        urbanAirship['appKey'] = item["_production-app-key"];
-                        urbanAirship['showInbox'] = data["_inbox-enabled"];
-                        urbanAirship['productionAppSecret'] = item["_production-app-secret"];
-                        urbanAirship['productionGcmSender'] = item["_production-gcm-sender"];
-                    }
-                }
+            pushBehavior['defaultProvider'] = data['_frn-default-provider'];
+
+            if (data['_frn-default-provider'] && data['_frn-default-provider'].toLowerCase() === 'parse') {
+                parse['appId'] = data["_production-app-id"];
+                parse['appKey'] = data["_production-app-key"];
+                pushBehavior['parse'] = parse;
+            } else if(data['_frn-default-provider'] && data['_frn-default-provider'].toLowerCase() === 'airship') {
+                urbanAirship['appId'] = data['_production-app-id'];
+                urbanAirship['appKey'] = data['_production-app-key'];
+                urbanAirship['productionAppSecret'] = data['_production-app-secret'];
+                pushBehavior['urbanAirship'] = urbanAirship;
             }
 
             //channel
@@ -291,19 +285,6 @@ var IOSConverter = function() {
                     channels.push(channel);
                 }
             }
-
-            if (Object.keys(parse).length == 0) {
-                parse['appId'] = "";
-                parse['appKey'] = "";
-            }
-            if (Object.keys(urbanAirship).length == 0) {
-                urbanAirship['appId'] = "";
-                urbanAirship['appKey'] = "";
-                urbanAirship['showInbox'] = false;
-                urbanAirship['productionAppSecret'] = "";
-            }
-            pushBehavior['parse'] = parse;
-            pushBehavior['urbanAirship'] = urbanAirship;
 
             if (channels.length > 0) {
                 pushBehavior['channels'] = channels;
