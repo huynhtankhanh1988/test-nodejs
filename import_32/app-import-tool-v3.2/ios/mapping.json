@@ -1,3 +1,104 @@
 {
-
+  "style": {
+    "_fg-color-1": "fgColor1",
+    "_bg-color-1": "bgColor1",
+    "_font-1": "font1",
+    "_font-2": "font2"
+  },
+  "search": {
+    "_base-url": "baseUrl",
+    "_result-count": "resultCount",
+    "_affiliate-ids": "affiliateIds"
+  },
+  "wsi": {
+    "_member-id": "memberId",
+    "_map-id": "mapId",
+    "_sdk-key": "sdkKey",
+    "_service-id": "serviceId"
+  },
+  "weather": {
+    "_suppress-ads": "showAds",
+    "_show-radar-in-navigation-menu": "showRadarInNavMenu"
+  },
+  "weatherLocation": {
+    "_name": "name",
+    "_weather-code": "code",
+    "_zip-code": "zipCode",
+    "_is-default": "isDefault",
+    "_map-display-altitude": "altitude",
+    "_center-point-latitude": "latitude",
+    "_center-point-longitude": "longitude"
+  },
+  "weatherSection": {
+    "_name": "name",
+    "_foreground-color": "fgColor",
+    "_background-color": "bgColor",
+    "_conditions-to-display": "conditions",
+    "_url": "feedUrl",
+    "_layer": "layer"
+  },
+  "connect": {
+    "_news-tip-email": "newsTipEmail",
+    "_share-photo-email": "sharePhotoEmail",
+    "_bug-report-email": "bugReportEmail",
+    "_call-us-phone": "callUsPhone",
+    "_about-us-url": "aboutUsUrl",
+    "_privacy-policy-url": "privacyPolicyUrl",
+    "_tos-url": "tosUrl"
+  },
+  "recommendation": {
+    "_partner-key": "partnerId",
+    "_widget-id": "outbrainWidgetId"
+  },
+  "adBehavior": {
+    "network": "network",
+    "_type": "type",
+    "_key": "key",
+    "_partner-key": "partnerKey",
+    "ad-target": "adTarget",
+    "_network-type": "networkType",
+    "_target": "target",
+    "_frn-banner-ads-enabled": "bannerAdsEnabled",
+    "_frn-inline-ads-enabled": "inlineAdsEnable",
+    "_frn-preroll-ads-enabled": "prerollAdsEnabled",
+    "_frn-splash-ads-enabled": "splashAdsEnabled",
+    "_frn-interstitial-ads-enabled": "interstitialAdsEnabled",
+    "_frn-article-interstitial-ad-frequency": "articleInterstitialAdFrequency",
+    "_frn-section-interstitial-ad-frequency": "sectionInterstitialAdFrequency",
+    "_frn-splash-ad-trigger-event": "splashAdTriggerEvent",
+    "_frn-splash-ad-show-duration": "splashAdShowDuration",
+    "_frn-splash-ad-timeout": "splashAdTimeout",
+    "_frn-splash-ad-show-percentage": "splashAdShowPercentage",
+    "_frn-splash-ad-max-time-between-ads": "splashAdMaxTimeBetweenAds",
+    "_frn-splash-ad-min-time-between-ads": "splashAdMinTimeBetweenAds",
+    "_url": "url",
+    "_video-preroll-url": "VASTUrl",
+    "_random-number-parameter": "randomNumberParameter",
+    "_frn-inline-ad-key": "inlineAdKey"
+  },
+  "menu": {
+    "ad-target": "adTarget",
+    "_target": "target",
+    "_network-type": "networkType",
+    "_title": "title",
+    "_type": "type",
+    "_item-query-suffix": "itemQuerySuffix",
+    "_frn-premium-url": "premiumUrl",
+    "_url": "url",
+    "_captions-url": "captionsUrl",
+    "_items-per-feed": "itemsPerFeed",
+    "_suppress-ads": "showAds",
+    "feed": "feed",
+    "_frn-background-image-url": "backgroundImageUrl",
+    "_frn-layout-type": "layoutType",
+    "_frn-display-count": "itemsInHomePage",
+    "_frn-category-highlight-color": "headerFontColor",
+    "_frn-category-background-color": "headerBackgroundColor",
+    "subsection": "menu",
+    "_frn-target-display": "targetDisplay",
+    "webView": "webView",
+    "_icon-url": "iconUrl",
+    "_icon-res": "iconRes",
+    "_frn-feed-type": "feedType"
+  }
 }

@@ -8,9 +8,11 @@ var util = new Util();
 var AndroidConverter = require('../android');
 var androidConverter = new AndroidConverter();
 
+var IOSConverter = require('../ios');
+var iOSConverter = new IOSConverter();
+
 // number regex
 var reg = /^\d+$/;
-
 
 var XmlConverter = function() {
     XmlConverter.prototype.convertXML2ItemConfig = function(platform, xmlString, callback) {
@@ -30,7 +32,6 @@ var XmlConverter = function() {
                 if (result.client) {// checking root tag must be 'client'
                     var outputJson = {};
                     outputJson = x2js.xml2js(xmlString);
-//                    console.log(JSON.stringify(outputJson));
                     var data = util.restructureManifestJSON(outputJson.client);
 
                     //START VALIDATION
@@ -63,6 +64,7 @@ var XmlConverter = function() {
                     if (platform.toLowerCase() === 'android') {
                         itemConfig = androidConverter.combineItemConfig(data);
                     } else {
+                        itemConfig = iOSConverter.combineItemConfig(data);
                     }
                     //END COMBINE ITEM CONFIG
 

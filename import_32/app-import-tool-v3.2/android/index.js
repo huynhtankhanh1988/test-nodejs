@@ -113,9 +113,11 @@ var AndroidConverter = function() {
 
             //facebook
             var facebook = {};
-            facebook['facebookAppId'] = preJson['facebook']['_fb-app-id'];
+            if (preJson['facebook'] && preJson['facebook']['_fb-app-id']) {
+                facebook['facebookAppId'] = preJson['facebook']['_fb-app-id'];
+                connect['facebook'] = facebook;
+            }
 
-            connect['facebook'] = facebook;
             setting['connect'] = connect;
 
             // menu
@@ -609,13 +611,18 @@ var AndroidConverter = function() {
     }
 
     function combineConnect(data) {
-        if (!data || Object.keys(data).length == 0) {
-            return {};
-        }
-        var mappedData = {};
-        mappedData = util.mappingNode(data, mapping['connect']);
+        try {
+            if (!data || Object.keys(data).length == 0) {
+                return {};
+            }
+            var mappedData = {};
+            mappedData = util.mappingNode(data, mapping['connect']);
 
-        return mappedData;
+            return mappedData;
+        } catch (e) {
+             e.message = "CONNECT: " + e.message;
+             throw e;
+        }
     }
 
 /**
