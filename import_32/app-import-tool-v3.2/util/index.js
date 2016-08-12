@@ -45,7 +45,8 @@ var Util = function() {
 
     function convertArray(data, attribute) {
         var result = [];
-        var child = {};
+        var item = {};
+
         if (Array.isArray(data)) {
             for (var index = 0; index < data.length; index++) {
                 item = data[index];
@@ -62,6 +63,7 @@ var Util = function() {
         var rs = {};
         var key = '';
         var value = '';
+
         for (var attribute in data) {
             if (typeof(data[attribute]) != "object") {
                 key = mapping[attribute];
@@ -93,7 +95,7 @@ var Util = function() {
     function doMappingArray(data, mapping) {
         var item = {};
         var result = [];
-        var child = {};
+
         if (data && data.length >= 1) {
             for (var index = 0; index < data.length; index++) {
                 item = data[index];
