@@ -132,6 +132,9 @@ var IOSConverter = function() {
             itemConfig['setting'] = setting;
             itemConfig['menu'] = menu;
 
+            //adding # for color fields
+            itemConfig = replaceColorFields(itemConfig);
+
             return itemConfig;
         } catch (e) {
             return {code: 500, 'message': e.message};
@@ -304,24 +307,17 @@ var IOSConverter = function() {
                 traffic.general = {enabled: false};
                 return traffic;
             }
+            var mappedData = util.mappingNode(data, mapping['trafficMap']);
+            traffic = mappedData;
 
             var general = {};
-            var trafficLocations = [];
             general['enabled'] = true;
-            general["showAds"] = !data["_suppress-ads"];
+            general["showAds"] = traffic["showAds"];
             traffic['general'] = general;
 
-            var location = {};
-            location['isDefault'] = true;
-            location.name = '';
-            location['defaultCenterLat'] = data['_default-center-lat'];
-            location['defaultCenterLong'] = data['_default-center-long'];
-            location['defaultAltitude'] = data['_default-altitude'];
-            location['defaultOverlays'] = data['_default-overlays'];
-            location['defaultLayer'] = data['_default-layer'];
-            trafficLocations.push(location);
+            //delete unused field
+            delete traffic['showAds'];
 
-            traffic['trafficLocations'] = trafficLocations;
             return traffic;
         }  catch (e) {
             e.message = "TRAFFIC MAP: " + e.message;
@@ -606,22 +602,49 @@ var IOSConverter = function() {
         }
     }
 
-/**
-	Get section by type
-*/
-function getSectionByType(type, sectionItems) {
-	var section = {};
-	if (sectionItems && sectionItems.length > 0) {
-        for(var i = 0; i < sectionItems.length; i ++) {
-            var item =  sectionItems[i];
-            if (item['_type'].toLowerCase() === type.toLowerCase()) {
-                section = item;
-                break;
+    /**
+        Get section by type
+    */
+    function getSectionByType(type, sectionItems) {
+        var section = {};
+        if (sectionItems && sectionItems.length > 0) {
+            for(var i = 0; i < sectionItems.length; i ++) {
+                var item =  sectionItems[i];
+                if (item['_type'].toLowerCase() === type.toLowerCase()) {
+                    section = item;
+                    break;
+                }
             }
         }
-	}
-	return section;
-}
+        return section;
+    }
+
+    /**
+        Replace color fields from having no suffix to # suffix
+    */
+    function replaceColorFields(json) {
+      for (var att in json) {
+        if (typeof(json[att]) != 'object') {
+            if (constant.colorList.indexOf(att) >= 0) {
+                if (json[att]) {
+                    json[att] =  !json[att].startsWith('#') ? ('#' + json[att]) : json[att];
+                }
+            }
+        } else {
+          var child = json[att];
+          if (typeof(child) == 'object') {
+            if (Array.isArray(child)) {
+              for (var i = 0; i < child.length; i ++) {
+                replaceColorFields(child[i]);
+              }
+            } else {
+              replaceColorFields(child);
+            }
+          }
+        }
+       }
+       return json;
+    }
 
 }
 module.exports = IOSConverter;

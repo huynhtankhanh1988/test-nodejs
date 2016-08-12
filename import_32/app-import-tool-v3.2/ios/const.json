@@ -2,5 +2,6 @@
   "weatherSection": ["severe-weather-alert", "conditions",
     "weather-news", "station-graphics",
     "todays-forecast", "detailed-readings",
-    "hourly-forecasts", "radar", "sun-and-moon", "daily-forecasts", "video-report"]
+    "hourly-forecasts", "radar", "sun-and-moon", "daily-forecasts", "video-report"],
+  "colorList": ["headerFontColor", "headerBackgroundColor", "fgColor1", "fgColor2", "bgColor1", "breakingNewsColor", "fgColor", "bgColor"]
 }

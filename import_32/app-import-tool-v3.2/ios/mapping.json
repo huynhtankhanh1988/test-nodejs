@@ -16,6 +16,18 @@
     "_result-count": "resultCount",
     "_affiliate-ids": "affiliateIds"
   },
+  "trafficMap": {
+    "ad-target": "adTarget",
+    "_network-type": "networkType",
+    "_target": "target",
+    "traffic-location": "trafficLocations",
+    "_name": "name",
+    "_is-default": "isDefault",
+    "_center-point-latitude": "defaultCenterLat",
+    "_center-point-longitude": "defaultCenterLong",
+    "_map-display-altitude": "defaultAltitude",
+    "_suppress-ads": "showAds"
+  },
   "wsi": {
     "_member-id": "memberId",
     "_map-id": "mapId",
@@ -77,10 +89,7 @@
     "_frn-splash-ad-show-percentage": "splashAdShowPercentage",
     "_frn-splash-ad-max-time-between-ads": "splashAdMaxTimeBetweenAds",
     "_frn-splash-ad-min-time-between-ads": "splashAdMinTimeBetweenAds",
-    "_url": "url",
-    "_video-preroll-url": "VASTUrl",
-    "_random-number-parameter": "randomNumberParameter",
-    "_frn-inline-ad-key": "inlineAdKey"
+    "_video-preroll-url": "VASTUrl"
   },
   "menu": {
     "ad-target": "adTarget",
@@ -88,10 +97,10 @@
     "_network-type": "networkType",
     "_title": "title",
     "_type": "type",
+    "_frn-exclude-from-pager": "excludeFromPager",
     "_item-query-suffix": "itemQuerySuffix",
     "_frn-premium-url": "premiumUrl",
     "_url": "url",
-    "_captions-url": "captionsUrl",
     "_items-per-feed": "itemsPerFeed",
     "_suppress-ads": "showAds",
     "feed": "feed",
@@ -99,11 +108,9 @@
     "_frn-title-image-url": "titleImageUrl",
     "_frn-layout-type": "layoutType",
     "_frn-display-count": "itemsInHomePage",
-    "_frn-category-highlight-color": "headerFontColor",
+    "_frn-header-font-color": "headerFontColor",
     "_frn-category-background-color": "headerBackgroundColor",
     "subsection": "menu",
-    "_frn-target-display": "targetDisplay",
-    "webView": "webView",
     "_icon-url": "iconUrl",
     "_icon-res": "iconRes",
     "_frn-feed-type": "feedType"

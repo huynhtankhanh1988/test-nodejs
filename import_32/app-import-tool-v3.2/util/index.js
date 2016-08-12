@@ -67,7 +67,7 @@ var Util = function() {
                 key = mapping[attribute];
                 value = data[attribute];
                 if (key) {
-                    if (attribute == "suppress-ads" && key == 'showAds') {
+                    if (attribute == "_suppress-ads" && key == 'showAds') {
                         value = !value;
                     }
                     rs[key] = value;
