@@ -35,7 +35,8 @@
     "_background-color": "bgColor",
     "_conditions-to-display": "conditions",
     "_url": "feedUrl",
-    "_layer": "layer"
+    "_layer": "layer",
+    "_suppress-ads": "showAds"
   },
   "connect": {
     "_news-tip-email": "newsTipEmail",
@@ -58,8 +59,8 @@
     "ad-target": "adTarget",
     "_network-type": "networkType",
     "_target": "target",
-    "_frn-banner-ads-enabled": "bannerAdsEnabled",
-    "_frn-inline-ads-enabled": "inlineAdsEnable",
+    "_frn-banner-ads-enabled": "bannerEnabled",
+    "_frn-inline-ads-enabled": "inlineEnable",
     "_frn-preroll-ads-enabled": "prerollAdsEnabled",
     "_frn-splash-ads-enabled": "splashAdsEnabled",
     "_frn-interstitial-ads-enabled": "interstitialAdsEnabled",

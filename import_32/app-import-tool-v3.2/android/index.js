@@ -488,7 +488,7 @@ var AndroidConverter = function() {
     	Get weather section by type
     */
     function getWeatherSection(type, weatherSectionArr) {
-    	var fullWeatherSectionFields = ['enabled', 'fgColor', 'bgColor', 'conditions', 'feedUrl', 'layer'];
+    	var fullWeatherSectionFields = ['enabled', 'fgColor', 'bgColor', 'conditions', 'feedUrl', 'layer', 'showAds'];
         var result = {};
         var weatherItem = {};
 
