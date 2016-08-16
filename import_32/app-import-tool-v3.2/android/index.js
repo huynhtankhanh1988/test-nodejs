@@ -129,7 +129,6 @@ var AndroidConverter = function() {
                 facebook['facebookAppId'] = preJson['facebook']['_fb-app-id'];
                 connect['facebook'] = facebook;
             }
-
             setting['connect'] = connect;
 
             // menu
@@ -140,13 +139,14 @@ var AndroidConverter = function() {
             menu = combineData({func: combineMenu, data: menuData, errCode: "MENU" });
 
             //Item config
+            itemConfig['affiliateId'] = preJson['_frn-affiliate-id'];
             itemConfig['theme'] = theme;
             itemConfig['setting'] = setting;
             itemConfig['menu'] = menu;
 
             return itemConfig;
         } catch (e) {
-            return {code: 500, 'message': e.message};
+            return {code: 500, 'message': e.message, ex: e};
         }
     }
 
