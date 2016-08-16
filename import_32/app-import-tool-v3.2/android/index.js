@@ -58,6 +58,7 @@ var AndroidConverter = function() {
             premiumFeeds['contextAffiliateId'] = '';
 
             // breaking news
+            var capUrl = '';
             var breakingSection = getSectionByType('breaking', preJson['section']);
             if (Object.keys(breakingSection).length > 0) {
                 var breakingNews = {};
@@ -65,6 +66,12 @@ var AndroidConverter = function() {
 
                 if (breakingSection['feed'] && breakingSection['feed'].length > 0) {
                     feed = breakingSection['feed'][0];
+
+                     //get caption url
+                     if (feed['_captions-url']) {
+                        capUrl = feed["_captions-url"] ? feed["_captions-url"] : "";
+                        capUrl = capUrl.replace("/{MEDIA_ID}.ttml", "");
+                     }
 
                     //set contextAffiliateId for premium feed
                     var contextAffiliateId = "";
@@ -92,6 +99,11 @@ var AndroidConverter = function() {
             } else {
                 setting['premiumFeeds'] = premiumFeeds;
             }
+
+            // video
+            var video = {};
+            video['closedCaptionUrl'] = capUrl;
+            setting['video'] = video;
 
             //traffic
             var traffic = {};

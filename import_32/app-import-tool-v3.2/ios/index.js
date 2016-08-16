@@ -63,6 +63,7 @@ var IOSConverter = function() {
                 var breakingNews = {};
                 var feed = {};
 
+                breakingNews['itemsOnHomePage'] = breakingSection['_frn-display-count']
                 if (breakingSection['feed'] && breakingSection['feed'].length > 0) {
                     feed = breakingSection['feed'][0];
 

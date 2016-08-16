@@ -16,7 +16,6 @@
     app.get('/', function(req, res) {
      fs.readFile("android.xml",'utf-8', function (err, data) {
         if (err) {
-            console.log("ERROR 0");
             res.end(err);
         } else {
             var json = xmlConverter.convertXML2ItemConfig('android', data.toString(), function(err, itemConfig){
