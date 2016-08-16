@@ -13,8 +13,8 @@
   var X2JS = require("x2js");
   var x2js = new X2JS();
 
-  var fileName = "android.xml";
-  var platform = "android";
+  var fileName = "ios.xml";
+  var platform = "iOS";
   var appType = platform === 'iOS' ? 'iPhone' : platform;
 
     app.get('/', function(req, res) {

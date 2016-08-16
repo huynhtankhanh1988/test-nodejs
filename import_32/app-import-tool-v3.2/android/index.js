@@ -131,6 +131,12 @@ var AndroidConverter = function() {
             }
             setting['connect'] = connect;
 
+            // homepage
+            var homePageSection = getSectionByType('homepage', preJson['section']);
+            console.log()
+            var homePage = combineData({func: combineHomePage, data: homePageSection, errCode: "HOMEPAGE" });
+            setting['homePage'] = homePage;
+
             // menu
             var menuData = preJson['section'];
             deleteMenuByType("homepage", menuData);
@@ -164,6 +170,15 @@ var AndroidConverter = function() {
             e.message =  params['errCode'] + ": " + e.message;
             throw e;
         }
+    }
+
+    function combineHomePage(data) {
+        if (!data || Object.keys(data).length == 0) {
+            return null;
+        }
+        var mappedData = util.mappingNode(data, mapping['homePage']);
+
+        return mappedData;
     }
 
     function combineMenu(data) {
@@ -607,7 +622,7 @@ function getSectionByType(type, sectionItems) {
 	if (sectionItems && sectionItems.length > 0) {
         for(var i = 0; i < sectionItems.length; i ++) {
             var item =  sectionItems[i];
-            if (item['_type'].toLowerCase() === type.toLowerCase()) {
+            if (item['_type'] && (item['_type'].toLowerCase() === type.toLowerCase())) {
                 section = item;
                 break;
             }

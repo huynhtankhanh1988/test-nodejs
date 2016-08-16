@@ -51,6 +51,13 @@
     "_partner-key": "partnerId",
     "_widget-id": "outbrainWidgetId"
   },
+  "homePage": {
+    "_title": "title",
+    "_suppress-ads": "showAds",
+    "ad-target": "adTargets",
+    "_network-type": "networkType",
+    "_target": "target"
+  },
   "adBehavior": {
     "network": "network",
     "_type": "type",
