@@ -196,7 +196,7 @@ var AndroidConverter = function() {
     function deleteMenuByType(type, menuItems) {
     	for (var i = 0; i < menuItems.length; i ++) {
     		var item =  menuItems[i];
-    		if (item['_type'] === type.toLowerCase()) {
+    		if (item['_type'] && (item['_type'] === type.toLowerCase())) {
     			 menuItems.splice(i, 1);
             }
     	}
