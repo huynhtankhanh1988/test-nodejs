@@ -16,18 +16,18 @@ var AndroidConverter = function() {
 
             //THEME
             var theme = {};
-            theme = combineStyle(preJson['brandCustomization']);
+            theme = combineData({func: combineStyle, data: preJson['brandCustomization'], errCode: "STYLE" });
 
             //SETTING
             //search
             var search = {};
-            search = combineSearch(preJson['frn-search']);
+            search = combineData({func: combineSearch, data: preJson['frn-search'], errCode: "SEARCH" });
             setting['search'] = search;
 
             // pushBehavior
             var pushBehavior = {};
             if (preJson['pushBehavior']) {
-                pushBehavior = combinePushBehavior(preJson['pushBehavior']);
+                pushBehavior = combineData({func: combinePushBehavior, data: preJson['pushBehavior'], errCode: "PUSH_BEHAVIOR" });
             } else {
                 pushBehavior['enabled'] = false;
             }
@@ -35,18 +35,18 @@ var AndroidConverter = function() {
 
             //analytics
             var analytics = {};
-            analytics = combineReportingBehavior(preJson['reportingBehavior']);
+            analytics = combineData({func: combineReportingBehavior, data: preJson['reportingBehavior'], errCode: "ANALYTICS" });
             setting['analytics'] = analytics;
 
             // Recommendation
             var recommendation = {};
-            recommendation = combineRecommendation(preJson['recommendation']);
+            recommendation = combineData({func: combineRecommendation, data: preJson['recommendation'], errCode: "RECOMMENDATION" });
 
             //advertising
             var advertising = {};
             var adBehavior = {};
 
-            adBehavior = combineAdvertising(preJson['adBehavior']);
+            adBehavior = combineData({func: combineAdvertising, data: preJson['adBehavior'], errCode: "ADVERTISING" });
             advertising['adBehavior'] = adBehavior;
 
             advertising['recommendation'] = recommendation;
@@ -95,21 +95,21 @@ var AndroidConverter = function() {
 
             //traffic
             var traffic = {};
-            traffic =  combineTraffic(preJson['traffic-map']);
+            traffic = combineData({func: combineTraffic, data: preJson['traffic-map'], errCode: "TRAFFIC_MAP" });
             setting['traffic'] = traffic;
 
             //wsi
             var wsi = {}
-            wsi = combineWsi(preJson['wsi']);
+            wsi = combineData({func: combineWsi, data: preJson['wsi'], errCode: "WSI" });
 
             //weather
             var weather = {};
-            weather = combineWeather(preJson['weather'], wsi);
+            weather = combineData({func: combineWeather, data: [preJson['weather'], wsi], errCode: "WEATHER" });
             setting['weather'] = weather;
 
             //connect
             var connect = {};
-            connect = combineConnect(preJson['settings']);
+            connect = combineData({func: combineConnect, data: preJson['settings'], errCode: "CONNECT" });
 
             //facebook
             var facebook = {};
@@ -125,7 +125,7 @@ var AndroidConverter = function() {
             deleteMenuByType("homepage", menuData);
             deleteMenuByType("breaking", menuData);
             var menu = [];
-            menu = combineMenu(menuData);
+            menu = combineData({func: combineMenu, data: menuData, errCode: "MENU" });
 
             //Item config
             itemConfig['theme'] = theme;
@@ -138,18 +138,29 @@ var AndroidConverter = function() {
         }
     }
 
-    function combineMenu(data) {
+    /**
+        General function for combine a object inside item config
+        Params:
+        - func: name of function to be call
+        - data: data to be handled
+        - errCode: error code to be thrown if got error
+    */
+    function combineData(params) {
         try {
-            if (!data || Object.keys(data).length == 0) {
-                return null;
-            }
-            var mappedData = util.mappingArray(data, mapping['menu']);
-
-            return mappedData;
-        }  catch (e) {
-            e.message = "MENU: " + e.message;
+            return params['func'].call(this, params['data']);
+        } catch (e) {
+            e.message =  params['errCode'] + ": " + e.message;
             throw e;
         }
+    }
+
+    function combineMenu(data) {
+        if (!data || Object.keys(data).length == 0) {
+            return null;
+        }
+        var mappedData = util.mappingArray(data, mapping['menu']);
+
+        return mappedData;
     }
 
     /**
@@ -165,241 +176,197 @@ var AndroidConverter = function() {
     }
 
     function combineStyle(data) { //NEED UPDATE WHEN INTEGRATE TO CALYPSO
-        try {
-            var theme = {};
-            if (!data || Object.keys(data).length == 0) {
-                return {};
-            }
-            var mappedData = util.mappingNode(data, mapping['style']);
-
-            theme['name'] = '';
-            theme['style'] = mappedData;
-
-            return theme;
-        }  catch (e) {
-            e.message = "STYLE: " + e.message;
-            throw e;
+        var theme = {};
+        if (!data || Object.keys(data).length == 0) {
+            return {};
         }
+        var mappedData = util.mappingNode(data, mapping['style']);
+
+        theme['name'] = '';
+        theme['style'] = mappedData;
+
+        return theme;
     }
 
     function combineReportingBehavior (data) {
-        try {
-            if (!data || Object.keys(data).length == 0) {
-                return {};
-            }
+        if (!data || Object.keys(data).length == 0) {
+            return {};
+        }
 
-            var mappedData = {};
-            mappedData['googleAnalyticsId'] = data['_id'];
-            return mappedData;
-        }
-        catch (e) {
-            e.message = "REPORT BEHAVIOR: " + e.message;
-            throw e;
-        }
+        var mappedData = {};
+        mappedData['googleAnalyticsId'] = data['_id'];
+        return mappedData;
     }
 
     function combineRecommendation(data) {
-        try {
-            var recommendation = {};
-            var outbrain = {};
-            if (!data || Object.keys(data).length == 0) {
-                outbrain['enabled'] = false;
-                recommendation['outbrain'] = outbrain;
-                return recommendation;
-            }
-
-            outbrain = util.mappingNode(data, mapping['recommendation']);
+        var recommendation = {};
+        var outbrain = {};
+        if (!data || Object.keys(data).length == 0) {
+            outbrain['enabled'] = false;
             recommendation['outbrain'] = outbrain;
-
             return recommendation;
         }
-        catch (e) {
-            e.message = "REPORT BEHAVIOR: " + e.message;
-            throw e;
-        }
+
+        outbrain = util.mappingNode(data, mapping['recommendation']);
+        recommendation['outbrain'] = outbrain;
+
+        return recommendation;
     }
 
     function combineSearch (data) {
-        try {
-            if (!data || Object.keys(data).length == 0) {
-                return {};
-            }
-
-            var mappedData = {};
-            mappedData = util.mappingNode(data, mapping['search']);
-            return mappedData;
-        } catch (e) {
-            e.message = "SEARCH: " + e.message;
-            throw e;
+        if (!data || Object.keys(data).length == 0) {
+            return {};
         }
+
+        var mappedData = {};
+        mappedData = util.mappingNode(data, mapping['search']);
+        return mappedData;
     }
 
     function combineAdvertising(data) {
-        try {
-            if (!data || Object.keys(data).length == 0) {
-                return {};
-            }
-             var mappedData = [];
-             mappedData = util.mappingArray(data, mapping['adBehavior']);
-             return mappedData;
-        } catch (e) {
-            e.message = "ADVERTISING: " + e.message;
-            throw e;
+        if (!data || Object.keys(data).length == 0) {
+            return {};
         }
-
+         var mappedData = [];
+         mappedData = util.mappingArray(data, mapping['adBehavior']);
+         return mappedData;
     }
 
     function combinePushBehavior(data) {
-        try {
-            if (!data || Object.keys(data).length == 0) {
-                return {};
-            }
-
-            var pushBehavior = {};
-            var item = {};
-            var parse = {};
-            var urbanAirship = {};
-
-            //push service
-            pushBehavior['enabled'] = true;
-            pushBehavior['defaultProvider'] = data["_frn-default-provider"];
-            if (data['pushService'] && data['pushService'].length > 0) {
-                for (var index = 0; index < data['pushService'].length; index++) {
-                    item = {};
-                    item = data['pushService'][index];
-                    if (item && item['_provider'] == "parse") {
-                        parse['appId'] = item["_production-app-id"];
-                        parse['appKey'] = item["_production-app-key"];
-                    } else if (item && item['_provider'] == "airship") {
-                        urbanAirship['appId'] = item["_production-app-id"];
-                        urbanAirship['appKey'] = item["_production-app-key"];
-                        urbanAirship['showInbox'] = data["_inbox-enabled"];
-                        urbanAirship['productionAppSecret'] = item["_production-app-secret"];
-                        urbanAirship['productionGcmSender'] = item["_production-gcm-sender"];
-                    }
-                }
-            }
-
-            //channel
-            var channels = [];
-            if (data['pushSegmentation'] && data['pushSegmentation'].length > 0) {
-                for ( var i = 0; i < data['pushSegmentation'].length; i++){
-                    var item = data['pushSegmentation'][i];
-                    var channel = {};
-                    channel['id'] = item['_tag'];
-                    channel['name'] = item['_title'];
-                    channels.push(channel);
-                }
-            }
-
-            if (Object.keys(parse).length == 0) {
-                parse['appId'] = "";
-                parse['appKey'] = "";
-            }
-            if (Object.keys(urbanAirship).length == 0) {
-                urbanAirship['appId'] = "";
-                urbanAirship['appKey'] = "";
-                urbanAirship['showInbox'] = false;
-                urbanAirship['productionAppSecret'] = "";
-            }
-            pushBehavior['parse'] = parse;
-            pushBehavior['urbanAirship'] = urbanAirship;
-
-            if (channels.length > 0) {
-                pushBehavior['channels'] = channels;
-            }
-
-            return pushBehavior;
-        }  catch (e) {
-            e.message = "PUSH BEHAVIOR: " + e.message;
-            throw e;
+        if (!data || Object.keys(data).length == 0) {
+            return {};
         }
+
+        var pushBehavior = {};
+        var item = {};
+        var parse = {};
+        var urbanAirship = {};
+
+        //push service
+        pushBehavior['enabled'] = true;
+        pushBehavior['defaultProvider'] = data["_frn-default-provider"];
+        if (data['pushService'] && data['pushService'].length > 0) {
+            for (var index = 0; index < data['pushService'].length; index++) {
+                item = {};
+                item = data['pushService'][index];
+                if (item && item['_provider'] == "parse") {
+                    parse['appId'] = item["_production-app-id"];
+                    parse['appKey'] = item["_production-app-key"];
+                } else if (item && item['_provider'] == "airship") {
+                    urbanAirship['appId'] = item["_production-app-id"];
+                    urbanAirship['appKey'] = item["_production-app-key"];
+                    urbanAirship['showInbox'] = data["_inbox-enabled"];
+                    urbanAirship['productionAppSecret'] = item["_production-app-secret"];
+                    urbanAirship['productionGcmSender'] = item["_production-gcm-sender"];
+                }
+            }
+        }
+
+        //channel
+        var channels = [];
+        if (data['pushSegmentation'] && data['pushSegmentation'].length > 0) {
+            for ( var i = 0; i < data['pushSegmentation'].length; i++){
+                var item = data['pushSegmentation'][i];
+                var channel = {};
+                channel['id'] = item['_tag'];
+                channel['name'] = item['_title'];
+                channels.push(channel);
+            }
+        }
+
+        if (Object.keys(parse).length == 0) {
+            parse['appId'] = "";
+            parse['appKey'] = "";
+        }
+        if (Object.keys(urbanAirship).length == 0) {
+            urbanAirship['appId'] = "";
+            urbanAirship['appKey'] = "";
+            urbanAirship['showInbox'] = false;
+            urbanAirship['productionAppSecret'] = "";
+            urbanAirship['productionGcmSender'] = "";
+        }
+        pushBehavior['parse'] = parse;
+        pushBehavior['urbanAirship'] = urbanAirship;
+
+        if (channels.length > 0) {
+            pushBehavior['channels'] = channels;
+        }
+
+        return pushBehavior;
     }
 
     function combineTraffic(data) {
-        try {
-            var traffic = {};
-            if (Object.keys(data).length == 0) {
-                traffic.general = {enabled: false};
-                return traffic;
-            }
-
-            var general = {};
-            var trafficLocations = [];
-            general['enabled'] = true;
-            general["showAds"] = !data["_suppress-ads"];
-            traffic['general'] = general;
-
-            var location = {};
-            location['isDefault'] = true;
-            location.name = '';
-            location['defaultCenterLat'] = data['_default-center-lat'];
-            location['defaultCenterLong'] = data['_default-center-long'];
-            location['defaultAltitude'] = data['_default-altitude'];
-            location['defaultOverlays'] = data['_default-overlays'];
-            location['defaultLayer'] = data['_default-layer'];
-            trafficLocations.push(location);
-
-            traffic['trafficLocations'] = trafficLocations;
+        var traffic = {};
+        if (Object.keys(data).length == 0) {
+            traffic.general = {enabled: false};
             return traffic;
-        }  catch (e) {
-            e.message = "TRAFFIC MAP: " + e.message;
-            throw e;
         }
+
+        var general = {};
+        var trafficLocations = [];
+        general['enabled'] = true;
+        general["showAds"] = !data["_suppress-ads"];
+        traffic['general'] = general;
+
+        var location = {};
+        location['isDefault'] = true;
+        location.name = '';
+        location['defaultCenterLat'] = data['_default-center-lat'];
+        location['defaultCenterLong'] = data['_default-center-long'];
+        location['defaultAltitude'] = data['_default-altitude'];
+        location['defaultOverlays'] = data['_default-overlays'];
+        location['defaultLayer'] = data['_default-layer'];
+        trafficLocations.push(location);
+
+        traffic['trafficLocations'] = trafficLocations;
+        return traffic;
+
     }
 
     function combineWsi(data) {
-        try {
-            if (!data || Object.keys(data).length == 0) {
-                return {};
-            }
-            var mappedData = {};
-            mappedData = util.mappingNode(data, mapping['wsi']);
-
-            return mappedData;
-        } catch (e) {
-            e.message = "WSI: " + e.message;
-            throw e;
+        if (!data || Object.keys(data).length == 0) {
+            return {};
         }
+        var mappedData = {};
+        mappedData = util.mappingNode(data, mapping['wsi']);
+
+        return mappedData;
     }
 
-    function combineWeather(data, wsi) {
-        try {
-            var weather = {};
-            var general = {};
-            if (!data || Object.keys(data).length == 0) {
-                general['enabled'] = false;
-                weather['wsi'] = wsi;
-                weather['general'] = general;
-                return weather;
-            }
-
-            //general
-            general['enabled'] = true;
-            general["showAds"] = !data["_suppress-ads"];
-            general['showRadarInNavMenu'] = data['_show-radar-in-navigation-menu'];
-            weather['general'] = general;
-
-            // wsi
+    function combineWeather(data) {
+        var weatherData = data[0];
+        var wsi = data[1];
+        var weather = {};
+        var general = {};
+        if (!weatherData || Object.keys(weatherData).length == 0) {
+            general['enabled'] = false;
             weather['wsi'] = wsi;
+            weather['general'] = general;
+            return weather;
+        }
 
-            // weather locations
-            var weatherLocations = [];
-             weatherLocations = combineWeatherLocation(data["weather-location"]);
-            if (weatherLocations) {
-                weather.weatherLocations = weatherLocations;
-            }
+        //general
+        general['enabled'] = true;
+        general["showAds"] = !weatherData["_suppress-ads"];
+        general['showRadarInNavMenu'] = weatherData['_show-radar-in-navigation-menu'];
+        weather['general'] = general;
 
-           // weather sections
-           var mappedSection = [];
-           mappedSection = util.mappingArray(data['weather-section'], mapping['weatherSection']);
-           combineWeatherSections(weather, mappedSection);
+        // wsi
+        weather['wsi'] = wsi;
 
-           return weather;
-       } catch (e) {
-            e.message = "WEATHER: " + e.message;
-            throw e;
-       }
+        // weather locations
+        var weatherLocations = [];
+         weatherLocations =  combineData({func: combineWeatherLocation, data: weatherData["weather-location"], errCode: "WEATHER_LOCATION" });
+        if (weatherLocations) {
+            weather.weatherLocations = weatherLocations;
+        }
+
+       // weather sections
+       var mappedSection = [];
+       mappedSection = util.mappingArray(weatherData['weather-section'], mapping['weatherSection']);
+       combineWeatherSections(weather, mappedSection);
+
+       return weather;
     }
 
     function combineWeatherSections(weather, sectionsArray) {
@@ -611,18 +578,13 @@ var AndroidConverter = function() {
     }
 
     function combineConnect(data) {
-        try {
-            if (!data || Object.keys(data).length == 0) {
-                return {};
-            }
-            var mappedData = {};
-            mappedData = util.mappingNode(data, mapping['connect']);
-
-            return mappedData;
-        } catch (e) {
-             e.message = "CONNECT: " + e.message;
-             throw e;
+        if (!data || Object.keys(data).length == 0) {
+            return {};
         }
+        var mappedData = {};
+        mappedData = util.mappingNode(data, mapping['connect']);
+
+        return mappedData;
     }
 
 /**

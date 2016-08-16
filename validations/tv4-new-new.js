@@ -38,68 +38,43 @@ tv4.setErrorReporter(function(error, data, schema) {
 var commonSchema = {
                      "type": "object",
                      "additionalProperties": false,
-                     "required": [
-                       "enabled",
-                       "font1",
-                       "vastUrl",
-                       "timeOffset"
-                     ],
                      "properties": {
-                       "enabled": {
-                         "type": "boolean"
-                       },
-                       "font1": {
+                       "networkType": {
                          "type": "string",
                          "enum": [
-                           "Sans Serif",
-                           "Serif",
-                           "Serif / Sans Serif"
+                           "dfp",
+                           "verve",
+                           "verve-dfp-mediation"
                          ],
                          "errorMessage": {
-                           "1": "Must be one of [Sans Serif, Serif, Serif / Sans Serif].",
-                           "302": "This field is required."
+                           "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
                          }
                        },
-                       "timeOffset": {
+                       "target": {
                          "type": "string",
-                         "default": "0",
-                         "pattern": "^\\d+$",
+                         "pattern": "^[1-9]{1}[0-9]{0,}$",
                          "errorMessage": {
-                           "202": "Please use only numbers.",
-                           "302": "This field is required."
-                         },
-                         "maxLength": 20,
-                         "minLength": 1
-                       },
-                       "vastUrl": {
-                         "type": "string",
-                         "maxLength": 2048,
-                         "minLength": 1,
-                         "pattern": "^((http(s)?|ftp):\\/\\/)(www\\.)?[a-zA-Z0-9-_\\.]+(\\.[a-zA-Z0-9]{2,})([-a-zA-Z0-9:%_\\+.;~#?&//=]*)$",
-                         "errorMessage": {
-                           "202": "You must enter a valid link.",
-                           "302": "This field is required."
+                           "202": "Please use positive number."
                          }
                        }
                      }
                    }
 
-       var data = {enabled: true}
-//       var data = {enabled: "", font1: "df", timeOffset: "gggd", vastUrl: "ddd"}
+       var data = {
+        networkType: "dfp",
+        target: "0"
+       }
 
-    var a = {
-                                      "type": "string",
-                                      "maxLength": 2048,
-                                      "minLength": 1,
-                                      "pattern": "^((http(s)?|ftp):\\/\\/)(www\\.)?[a-zA-Z0-9-_\\.]+(\\.[a-zA-Z0-9]{2,})([-a-zA-Z0-9:%_\\+.;~#?&//=]*)$",
-                                      "errorMessage": {
-                                        "302": "This field is required.",
-                                        "202": "You must enter a valid link."
+commonSchema = {
+    type: "string",
+    pattern: "^[1-9][0-9]?$|^100$",
+     "errorMessage": {
+       "202": "Please use positive number within 100."
+     }
+}
 
-                                      }
-                                    }
+data = "09";
 
-//console.log("---ggg: " + a['errorMessage']['202']);
 
 
 var result = tv4.validateMultiple(data, commonSchema);
