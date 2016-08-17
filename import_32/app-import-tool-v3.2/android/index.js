@@ -143,8 +143,6 @@ var AndroidConverter = function() {
             deleteMenuByType("breaking", menuData);
             var menu = [];
             menu = combineData({func: combineMenu, data: menuData, errCode: "MENU" });
-//            console.log(JSON.stringify(menu));
-//            console.log("=====menu after mapping=====");
 
             //Item config
             itemConfig['affiliateId'] = preJson['_frn-affiliate-id'];
@@ -191,7 +189,6 @@ var AndroidConverter = function() {
 
         //build the structure that map with properties of parse server
         mappedData = util.updateAndroidMenu(mappedData);
-        console.log(JSON.stringify(mappedData));
 
         return mappedData;
     }
