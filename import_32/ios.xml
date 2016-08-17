@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <client
         partner-name="FRANK"
         partner-id="1"
@@ -45,7 +46,7 @@
             frn-banner-ads-enabled="true"
             frn-inline-ads-enabled="true"
             frn-preroll-ads-enabled="true"
-            frn-splash-ads-enabled="true"
+            frn-splash-ads-enabled="false"
             frn-interstitial-ads-enabled="true"
             frn-article-interstitial-ad-frequency="3"
             frn-section-interstitial-ad-frequency="3"
@@ -55,15 +56,10 @@
             frn-splash-ad-max-time-between-ads="60"
             frn-splash-ad-min-time-between-ads="30"
             frn-splash-ad-timeout="5000"
-            video-preroll-url="https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&amp;iu=/43459271/loc-mob/wrcb/app-news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;ad_rule=0&amp;output=xml_vast2&amp;unviewed_position_start=1&amp;url=http://www.wrcbtv.com&amp;ciu_szs=&amp;vpos=preroll">
+            video-preroll-url="https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&amp;iu=/43459271/loc-mob/franklyadops/app-news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;ad_rule=0&amp;output=xml_vast2&amp;unviewed_position_start=1&amp;url=http://www.wrcbtv.com&amp;ciu_szs=&amp;vpos=preroll">
         <network
-                type="verve-dfp-mediation"
-                key="/11027047/vrvadmobint"
-                partner-key="adsdkexample"
-        />
-        <ad-target
-                network-type="verve-dfp-mediation"
-                target="97"
+                type="dfp"
+                key="/43459271/loc-mob/franklyadops/app-news"
         />
     </adBehavior>
     <recommendations
@@ -208,6 +204,22 @@
                     frn-premium-url="http://developer.worldnow.com/feed/categories/302649/stories?apikey=midwest-intdev-kfmb-0387b7c8bcd5&amp;context-affiliate-id=750&amp;alt=json"
             />
         </subsection>
+    </section>
+
+    <section
+            frn-show-in-version="list"
+            frn-layout-type="itemVerticalList"
+            frn-display-count="5"
+            frn-header-font-color="0075b3"
+            frn-exclude-from-pager="false"
+            title="Brightcove Feed Test"
+            items-per-feed="20"
+            view-layout="list"
+            suppress-ads="true">
+        <feed
+                frn-premium-url="http://api.brightcove.com/services/library?command=find_playlist_by_id&amp;playlist_id=4791479918001&amp;output=mrss&amp;playlist_fields=id%2Cname%2CshortDescription%2CplayListType%2Cvideos&amp;video_fields=id%2Cname%2ClinkURL%2Crenditions&amp;media_delivery=http&amp;token=6tvmzRttnHsP8Ti6DBo6qyoIix9HkSg6vHLnqwAemrXim3gp5OAHlQ.."
+                view-layout="list"
+        />
     </section>
 
     <section

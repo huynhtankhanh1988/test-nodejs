@@ -76,7 +76,7 @@
     "_target": "target"
   },
   "adBehavior": {
-    "network": "network",
+    "network": "adNetwork",
     "_type": "type",
     "_key": "key",
     "_partner-key": "partnerKey",
@@ -99,7 +99,7 @@
     "_video-preroll-url": "VASTUrl"
   },
   "menu": {
-    "ad-target": "adTarget",
+    "ad-target": "adTargets",
     "_target": "target",
     "_network-type": "networkType",
     "_title": "title",
@@ -119,7 +119,7 @@
     "_frn-category-background-color": "headerBackgroundColor",
     "subsection": "menu",
     "_icon-url": "iconUrl",
-    "_icon-res": "iconRes",
+    "_icon-res": "iconResource",
     "_frn-feed-type": "feedType"
   }
 }

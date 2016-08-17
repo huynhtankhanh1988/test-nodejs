@@ -143,6 +143,8 @@ var AndroidConverter = function() {
             deleteMenuByType("breaking", menuData);
             var menu = [];
             menu = combineData({func: combineMenu, data: menuData, errCode: "MENU" });
+//            console.log(JSON.stringify(menu));
+//            console.log("=====menu after mapping=====");
 
             //Item config
             itemConfig['affiliateId'] = preJson['_frn-affiliate-id'];
@@ -254,8 +256,18 @@ var AndroidConverter = function() {
         if (!data || Object.keys(data).length == 0) {
             return {};
         }
+        // restructure adTarget
+        if (data && data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i]['ad-target'] && (data[i]['ad-target'].length > 0)) {
+                    data[i]['ad-target'] = data[i]['ad-target'][0];
+                }
+            }
+        }
+
          var mappedData = [];
          mappedData = util.mappingArray(data, mapping['adBehavior']);
+
          return mappedData;
     }
 

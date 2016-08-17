@@ -28,7 +28,6 @@
                    res.json({code: 500, msg: err.message});
                 } else {
                     if (!itemConfig.ex) {
-                        console.log('thanh cong ');
                         //
 						itemConfig["name"] = "import " + platform;
 						itemConfig["appType"] = appType;
