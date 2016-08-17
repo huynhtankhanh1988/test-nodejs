@@ -189,6 +189,10 @@ var AndroidConverter = function() {
         }
         var mappedData = util.mappingArray(data, mapping['menu']);
 
+        //build the structure that map with properties of parse server
+        mappedData = util.updateAndroidMenu(mappedData);
+        console.log(JSON.stringify(mappedData));
+
         return mappedData;
     }
 
