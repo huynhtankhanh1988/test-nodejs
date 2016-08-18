@@ -44,10 +44,10 @@ var AndroidConverter = function() {
 
             //advertising
             var advertising = {};
-            var adBehavior = {};
+            var adBehaviors = [];
 
-            adBehavior = combineData({func: combineAdvertising, data: preJson['adBehavior'], errCode: "ADVERTISING" });
-            advertising['adBehavior'] = adBehavior;
+            adBehaviors = combineData({func: combineAdvertising, data: preJson['adBehavior'], errCode: "ADVERTISING" });
+            advertising['adBehaviors'] = adBehaviors;
 
             advertising['recommendation'] = recommendation;
             setting['advertising'] = advertising;

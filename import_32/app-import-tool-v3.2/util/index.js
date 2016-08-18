@@ -156,7 +156,7 @@ var Util = function() {
                         var feed = menuItem.feeds[j];
                         premiumUrl = feed["premiumUrl"];
                         if (premiumUrl) {
-                            jdex = premiumUrl.indexOf("?");
+                            var jdex = premiumUrl.indexOf("?");
                             if (jdex > 0) {
                                 premiumUrl = premiumUrl.substring(0, jdex);
                             }
