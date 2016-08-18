@@ -84,7 +84,7 @@
     "_network-type": "networkType",
     "_target": "target",
     "_frn-banner-ads-enabled": "bannerEnabled",
-    "_frn-inline-ads-enabled": "inlineEnable",
+    "_frn-inline-ads-enabled": "inlineEnabled",
     "_frn-preroll-ads-enabled": "prerollAdsEnabled",
     "_frn-splash-ads-enabled": "splashAdsEnabled",
     "_frn-interstitial-ads-enabled": "interstitialAdsEnabled",
@@ -96,7 +96,7 @@
     "_frn-splash-ad-show-percentage": "splashAdShowPercentage",
     "_frn-splash-ad-max-time-between-ads": "splashAdMaxTimeBetweenAds",
     "_frn-splash-ad-min-time-between-ads": "splashAdMinTimeBetweenAds",
-    "_video-preroll-url": "VASTUrl"
+    "_video-preroll-url": "vastUrl"
   },
   "menu": {
     "ad-target": "adTargets",

@@ -79,8 +79,8 @@
     "_frn-splash-ad-show-percentage": "splashAdShowPercentage",
     "_frn-splash-ad-max-time-between-ads": "splashAdMaxTimeBetweenAds",
     "_frn-splash-ad-min-time-between-ads": "splashAdMinTimeBetweenAds",
-    "_url": "url",
-    "_video-preroll-url": "VASTUrl",
+    "_url": "adUrl",
+    "_video-preroll-url": "vastUrl",
     "_random-number-parameter": "randomNumberParameter",
     "_frn-inline-ad-key": "inlineAdKey"
   },
