@@ -190,6 +190,9 @@ var AndroidConverter = function() {
         //build the structure that map with properties of parse server
         mappedData = util.updateAndroidMenu(mappedData);
 
+        // build menu structure
+        mappedData = util.buildAndroidMenuStructure(mappedData, '69');
+
         return mappedData;
     }
 

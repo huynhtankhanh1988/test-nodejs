@@ -1,4 +1,5 @@
 var constant = require("./const.json");
+var numReg = /^\d+$/;
 
 
 var Util = function() {
@@ -16,6 +17,10 @@ var Util = function() {
 
     Util.prototype.updateAndroidMenu = function(data) {
         return doUpdateAndroidMenu(data);
+    }
+
+    Util.prototype.buildAndroidMenuStructure = function(menuItemArr, searchAffiliateId) {
+        return doBuildAndroidMenuStructure(menuItemArr, searchAffiliateId);
     }
 
     function convertNode(data) {
@@ -167,12 +172,14 @@ var Util = function() {
                     for (var j = 0; j < menuItem.feeds.length; j ++) {
                         var feed = menuItem.feeds[j];
 
-                        if(feed['url']) {
-                            feed['premiumUrl'] = feed['url'];
+                        if(feed['premiumUrl']) {
+                            var premiumUrl = feed["premiumUrl"];
+                            if (premiumUrl.indexOf("?") >=0) {
+                                feed['premiumUrl'] = premiumUrl.substring(0, premiumUrl.indexOf("?"));
+                            }
                         }
 
                         //delete unused field
-                        delete feed['url'];
                         delete feed['feedType'];
                         delete feed['type'];
                         delete feed['title'];// if exist
@@ -181,6 +188,12 @@ var Util = function() {
             } else {
                 menuItem.type = "feed";
                 menuItem.typeFamily = "feed_type";
+
+                // change premiumUrl to url for saving to data base
+                if (menuItem['feed'] && menuItem['feed']['premiumUrl']) {
+                    menuItem['feed']['url'] = menuItem['feed']['premiumUrl'];
+                    delete menuItem['feed']['premiumUrl'];
+                }
 
                 //delete unused field
                 delete menuItem.feed["title"];
@@ -217,12 +230,90 @@ var Util = function() {
 
         	if (feeds.length > 0) { //category os slideshow type
         		menuItem.feeds = feeds;
-        		delete menuItem.feed;// delete old structure of fee
+        		delete menuItem.feed;// delete old structure of feed
         	} else {//feed type
         		menuItem.feed = menuItem.feed[0];
         	}
         }
         return menuItem;
+    }
+
+    function doBuildAndroidMenuStructure(menuItemArr, searchAffiliateId) {
+        if (menuItemArr && menuItemArr.length > 0) {
+            for (var i = 0; i < menuItemArr.length; i++) {
+                var item = menuItemArr[i];
+                if (item['feeds'] && item['feeds'].length > 0) {
+                    for (var j = 0; j < item['feeds'].length; j++) {
+                        var feed = item.feeds[j];
+                        if (feed && feed['premiumUrl'] && feed['premiumUrl'].toLowerCase().indexOf("/categories/") >= 0 ) {
+                            //parentContentType
+                            feed['parentContentType'] = "categories";
+
+                            //childContentType
+                            feed['childContentType'] = "stories";
+                            if (feed['premiumUrl'].endsWith("clips")) {
+                                feed['childContentType'] = "clips";
+                            }
+
+                            //parentContentId
+                            var parentContentId = feed['premiumUrl'].substring(feed['premiumUrl'].indexOf("/categories/") + "/categories/".length, feed['premiumUrl'].lastIndexOf("/"));
+                            feed.parentContentId = -1;
+                            if (numReg.test(parentContentId)) {
+                                feed['parentContentId'] = parseInt(parentContentId);
+                            }
+
+                            //contentPageUrl
+                            feed['contentPageUrl'] = '';
+                        }
+
+                        if (feed && feed['url'] && feed['url'].toLowerCase().indexOf("/category/") >= 0) {
+                            //parentContentType
+                            feed.parentContentType = "categories";
+
+                            //childContentType
+                            feed['childContentType'] = "stories";
+                            if (feed.url.endsWith("clienttype=mrss")) {
+                                feed['childContentType'] = "clips";
+                            }
+
+                            //contentPageUrl
+                            if (feed['url'].indexOf("?") >= 0) {
+                                feed['contentPageUrl'] = feed['url'].substring(feed['url'].lastIndexOf("/") + 1, feed['url'].indexOf("?"));
+                            }
+                        }
+
+                        // start: TEMPORARY CODE FOR BUILD 'SLIDESHOW', waiting for confirmation
+                        if (feed && feed['premiumUrl'] && feed['premiumUrl'].toLowerCase().indexOf("/widgets/") >= 0) {
+                            //parentContentType
+                            feed['parentContentType'] = "widgets";
+
+                            //parentContentId
+                            var parentContentId = feed['premiumUrl'].substring(feed['premiumUrl'].indexOf("/widgets/") + "/widgets/".length, feed['premiumUrl'].length);
+                            feed['parentContentId'] = -1;
+                            if (numReg.test(parentContentId)) {
+                                feed['parentContentId'] = parseInt(parentContentId);
+                            }
+
+                            feed['contentPageUrl'] = '';
+                            feed['childContentType'] = '';
+                        }// end
+
+                    }
+                }
+
+                //set search affiliateId for category and slideshow
+                if ((item['type'] === 'category' || item['type'] === 'slideshow') && !item['searchAffiliateId']) {
+                    item.searchAffiliateId = '' + searchAffiliateId;
+                }
+
+                //recursive for children menu
+                if (item['menu'] && item['menu'].length > 0) {
+                    doBuildAndroidMenuStructure(item['menu'], searchAffiliateId)
+                }
+            }
+        }
+
+        return menuItemArr;
     }
 
 }
