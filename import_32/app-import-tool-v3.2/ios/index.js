@@ -122,7 +122,7 @@ var IOSConverter = function() {
 
             // homepage
             var homePageSection = getSectionByType('homepage', preJson['section']);
-            console.log()
+
             var homePage = combineData({func: combineHomePage, data: homePageSection, errCode: "HOMEPAGE" });
             setting['homePage'] = homePage;
 
@@ -329,8 +329,6 @@ var IOSConverter = function() {
     function combineWeather(data, wsi) {
         var weatherData = data[0];
         var wsi = data[1];
-
-        console.log(JSON.stringify(weatherData));
 
         var weather = {};
         var general = {};

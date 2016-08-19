@@ -316,10 +316,10 @@ var Util = function() {
             }
 
         	if (feeds.length > 0) { //category os slideshow type
-        		menuItem.feeds = feeds;
-        		delete menuItem.feed;// delete old structure of feed
+        		menuItem['feeds'] = feeds;
+        		delete menuItem['feed'];// delete old structure of feed
         	} else {//feed type
-        		menuItem.feed = menuItem.feed[0];
+        		menuItem['feed'] = menuItem['feed'][0];
         	}
         }
         return menuItem;
@@ -346,10 +346,10 @@ var Util = function() {
             }
 
             if (feeds.length > 0) { //category os slideshow type
-                menuItem.feeds = feeds;
-                delete menuItem.feed;// delete old structure of feed
+                menuItem['feeds'] = feeds;
+                delete menuItem['feed'];// delete old structure of feed
             } else {//feed type
-                menuItem.feed = menuItem.feed[0];
+                menuItem['feed'] = menuItem['feed'][0];
             }
         }
         return menuItem;
