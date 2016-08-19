@@ -8,16 +8,15 @@
     "_breaking-news-color": "breakingNewsColor"
   },
   "search": {
-    "ad-target": "adTarget",
+    "ad-target": "adTargets",
     "_network-type": "networkType",
     "_target": "target",
-    "_suppress-ads": "showAds",
     "_base-url": "baseUrl",
     "_result-count": "resultCount",
     "_affiliate-ids": "affiliateIds"
   },
   "trafficMap": {
-    "ad-target": "adTarget",
+    "ad-target": "adTargets",
     "_network-type": "networkType",
     "_target": "target",
     "traffic-location": "trafficLocations",
@@ -36,7 +35,14 @@
   },
   "weather": {
     "_suppress-ads": "showAds",
-    "_show-radar-in-navigation-menu": "showRadarInNavMenu"
+    "_show-radar-in-navigation-menu": "showRadarInNavMenu",
+    "ad-target": "adTargets",
+    "_network-type": "networkType",
+    "_target": "target"
+  },
+  "adTargets": {
+    "_network-type": "networkType",
+    "_target": "target"
   },
   "weatherLocation": {
     "_name": "name",

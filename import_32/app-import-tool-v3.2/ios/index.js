@@ -44,10 +44,10 @@ var IOSConverter = function() {
 
             //advertising
             var advertising = {};
-            var adBehavior = {};
+            var adBehaviors = [];
 
-            adBehavior = combineData({func: combineAdvertising, data: preJson['adBehavior'], errCode: "ADVERTISING" });
-            advertising['adBehavior'] = adBehavior;
+            adBehaviors = combineData({func: combineAdvertising, data: preJson['adBehavior'], errCode: "ADVERTISING" });
+            advertising['adBehaviors'] = adBehaviors;
 
             advertising['recommendation'] = recommendation;
             setting['advertising'] = advertising;
@@ -330,6 +330,8 @@ var IOSConverter = function() {
         var weatherData = data[0];
         var wsi = data[1];
 
+        console.log(JSON.stringify(weatherData));
+
         var weather = {};
         var general = {};
         if (!weatherData || Object.keys(weatherData).length == 0) {
@@ -344,6 +346,11 @@ var IOSConverter = function() {
         general["showAds"] = !weatherData["_suppress-ads"];
         general['showRadarInNavMenu'] = weatherData['_show-radar-in-navigation-menu'];
         weather['general'] = general;
+
+        // adTargets
+        var adTargets = [];
+        adTargets = util.mappingArray(weatherData['ad-target'], mapping['adTargets']);
+        weather['adTargets'] = adTargets;
 
         // wsi
         weather['wsi'] = wsi;
