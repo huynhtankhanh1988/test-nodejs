@@ -19,6 +19,10 @@ var Util = function() {
         return doUpdateAndroidMenu(data);
     }
 
+    Util.prototype.updateIOSMenu = function(data) {
+        return doUpdateIOSMenu(data);
+    }
+
     Util.prototype.buildAndroidMenuStructure = function(menuItemArr, searchAffiliateId) {
         return doBuildAndroidMenuStructure(menuItemArr, searchAffiliateId);
     }
@@ -196,7 +200,7 @@ var Util = function() {
                 }
 
                 //delete unused field
-                delete menuItem.feed["title"];
+                delete menuItem['feed']["title"];
             }
 
             //recursive for child menu
@@ -207,6 +211,89 @@ var Util = function() {
 
         return menuArr;
     };
+
+
+    function doUpdateIOSMenu(menuArr) {
+        if (!menuArr || Object.keys(menuArr).length == 0) {
+            return null;
+        }
+
+        var menuItem =  {};
+        for (var i = 0; i < menuArr.length; i ++) {
+            menuItem = menuArr[i];
+            menuItem = combineFeedForIOSMenu(menuItem);
+
+            //category or slide show
+            if (menuItem['feeds'] && menuItem['feeds'].length > 0) {
+                //set type and typeFamily for menuItem
+                menuItem['type'] = menuItem['feeds'][0]['type'];
+                menuItem['typeFamily'] = menuItem['feeds'][0]['type'] + "_type";
+
+                //category
+                if (menuItem['type'] == 'category') {
+                    for (var j = 0; j < menuItem.feeds.length; j ++) {
+                        var feed = menuItem.feeds[j];
+                        premiumUrl = feed["premiumUrl"];
+                        if (premiumUrl) {
+                            var jdex = premiumUrl.indexOf("?");
+                            if (jdex > 0) {
+                                premiumUrl = premiumUrl.substring(0, jdex);
+                            }
+                            feed["premiumUrl"] = premiumUrl;
+                        }
+
+                        //delete unused field
+                        delete feed["type"];
+                        delete feed['title'];// if exist
+                    }
+                } else if (menuItem['type'] == 'slideshow') { //slideshow
+                    for (var j = 0; j < menuItem.feeds.length; j ++) {
+                        var feed = menuItem.feeds[j];
+
+                        if(feed['premiumUrl']) {
+                            var premiumUrl = feed["premiumUrl"];
+                            if (premiumUrl.indexOf("?") >=0) {
+                                feed['premiumUrl'] = premiumUrl.substring(0, premiumUrl.indexOf("?"));
+                            }
+                        }
+
+                        //delete unused field
+                        delete feed['feedType'];
+                        delete feed['type'];
+                        delete feed['title'];// if exist
+                    }
+                }
+            }
+//             else if (!menuItem['feed']) { check if a section has no feed
+//                if (menuItem['layoutType']) {
+//                    menuItem['type'] = 'category';
+//                    menuItem['typeFamily'] ='category_type'
+//                }
+//            }
+             else {
+                 menuItem.type = "feed";
+                 menuItem.typeFamily = "feed_type";
+
+                 // change premiumUrl to url for saving to data base
+                 if (menuItem['feed'] && menuItem['feed']['premiumUrl']) {
+                     menuItem['feed']['url'] = menuItem['feed']['premiumUrl'];
+
+                     //delete unused field
+                     delete menuItem['feed']['premiumUrl'];
+                     delete menuItem['feed']["title"];
+                 }
+
+
+             }
+
+            //recursive for child menu
+            if (menuItem['menu'] && menuItem['menu'].length > 0) {
+                doUpdateIOSMenu(menuItem['menu']);
+            }
+        }
+
+        return menuArr;
+    }
 
     function combineFeedForAndroidMenu(menuItem) {
         if (menuItem['feed'] && menuItem['feed'].length > 0) {
@@ -234,6 +321,36 @@ var Util = function() {
         	} else {//feed type
         		menuItem.feed = menuItem.feed[0];
         	}
+        }
+        return menuItem;
+    }
+
+    function combineFeedForIOSMenu(menuItem) {
+        if (menuItem['feed'] && menuItem['feed'].length > 0) {
+            var feeds = [];
+            for (var i = 0; i < menuItem['feed'].length; i++) {
+                var feed = menuItem['feed'][i];
+                var premiumUrl =  feed['premiumUrl'] ? feed['premiumUrl'] : '';
+                var type = 'feed';
+                if (feed['feedType'] && (feed['feedType'].toLowerCase() == 'image-slideshow')) {
+                    type = 'slideshow';
+                } else if (premiumUrl.indexOf("/categories/") > -1) {
+                    type = 'category';
+                }
+
+                // if type is category or slideshow
+                if (type != 'feed') {
+                    feed.type = type;
+                    feeds.push(feed);
+                }
+            }
+
+            if (feeds.length > 0) { //category os slideshow type
+                menuItem.feeds = feeds;
+                delete menuItem.feed;// delete old structure of feed
+            } else {//feed type
+                menuItem.feed = menuItem.feed[0];
+            }
         }
         return menuItem;
     }

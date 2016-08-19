@@ -191,7 +191,7 @@ var AndroidConverter = function() {
         mappedData = util.updateAndroidMenu(mappedData);
 
         // build menu structure
-        mappedData = util.buildAndroidMenuStructure(mappedData, '69');
+//        mappedData = util.buildAndroidMenuStructure(mappedData, '69');
 
         return mappedData;
     }

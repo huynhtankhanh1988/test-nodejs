@@ -179,6 +179,8 @@ var IOSConverter = function() {
         }
         var mappedData = util.mappingArray(data, mapping['menu']);
 
+        mappedData = util.updateIOSMenu(mappedData);
+
         return mappedData;
     }
 
