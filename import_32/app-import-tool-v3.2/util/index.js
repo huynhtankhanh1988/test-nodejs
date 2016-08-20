@@ -189,6 +189,10 @@ var Util = function() {
                         delete feed['title'];// if exist
                     }
                 }
+            }
+            else if (menuItem['layoutType'] && (menuItem['layoutType'].toLowerCase() == 'categorycarousel' )) {
+                     menuItem['type'] = 'category';
+                     menuItem['typeFamily'] = 'category_type';
             } else {
                 menuItem.type = "feed";
                 menuItem.typeFamily = "feed_type";
@@ -196,11 +200,11 @@ var Util = function() {
                 // change premiumUrl to url for saving to data base
                 if (menuItem['feed'] && menuItem['feed']['premiumUrl']) {
                     menuItem['feed']['url'] = menuItem['feed']['premiumUrl'];
-                    delete menuItem['feed']['premiumUrl'];
-                }
 
-                //delete unused field
-                delete menuItem['feed']["title"];
+                    //delete unused fields
+                    delete menuItem['feed']['premiumUrl'];
+                    delete menuItem['feed']["title"];
+                }
             }
 
             //recursive for child menu
@@ -225,6 +229,11 @@ var Util = function() {
 
             //category or slide show
             if (menuItem['feeds'] && menuItem['feeds'].length > 0) {
+                //recursive for child menu
+                if (menuItem['menu'] && menuItem['menu'].length > 0) {
+                    doUpdateIOSMenu(menuItem['menu']);
+                }
+
                 //set type and typeFamily for menuItem
                 menuItem['type'] = menuItem['feeds'][0]['type'];
                 menuItem['typeFamily'] = menuItem['feeds'][0]['type'] + "_type";
@@ -263,14 +272,10 @@ var Util = function() {
                         delete feed['title'];// if exist
                     }
                 }
-            }
-//             else if (!menuItem['feed']) { check if a section has no feed
-//                if (menuItem['layoutType']) {
-//                    menuItem['type'] = 'category';
-//                    menuItem['typeFamily'] ='category_type'
-//                }
-//            }
-             else {
+            } else if (menuItem['layoutType'] && (menuItem['layoutType'].toLowerCase() == 'categorycarousel' )) {
+                    menuItem['type'] = 'category';
+                    menuItem['typeFamily'] = 'category_type';
+            } else {
                  menuItem.type = "feed";
                  menuItem.typeFamily = "feed_type";
 
