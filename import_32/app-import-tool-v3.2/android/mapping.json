@@ -10,6 +10,10 @@
     "_result-count": "resultCount",
     "_affiliate-ids": "affiliateIds"
   },
+  "adTargets": {
+    "_network-type": "networkType",
+    "_target": "target"
+  },
   "wsi": {
     "_member-id": "memberId",
     "_map-id": "mapId",
@@ -59,6 +63,7 @@
     "_target": "target"
   },
   "adBehavior": {
+    "_suppress-ads": "showAds",
     "network": "adNetwork",
     "_type": "type",
     "_key": "key",

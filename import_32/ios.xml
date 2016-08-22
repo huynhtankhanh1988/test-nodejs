@@ -114,6 +114,9 @@
             frn-title-image-url=""
             frn-exclude-from-pager="true"
             frn-display-count="5">
+        <ad-target
+                network-type="verve-dfp-mediation"
+                target="50"/>
         <feed
                 frn-premium-url="http://developer.worldnow.com/feed/categories/123974/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json"
         />

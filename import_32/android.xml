@@ -177,6 +177,9 @@
              item-per-feed="20"
              frn-category-background-color="#96181c"
              type="breaking">
+        <ad-target
+                network-type="verve-dfp-mediation"
+                target="50"/>
         <feed item-query-suffix=""
               frn-premium-url="http://developer.worldnow.com/feed/categories/123974/stories?apikey=sarkestarzian-FranklyApps-wrcb-e&amp;context-affiliate-id=750&amp;alt=json"
               captions-url="http://wrcb.images.worldnow.com/metadata/{MEDIA_ID}.ttml"/>

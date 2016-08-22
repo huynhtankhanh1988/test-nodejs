@@ -60,6 +60,7 @@ var AndroidConverter = function() {
             // breaking news
             var capUrl = '';
             var breakingSection = getSectionByType('breaking', preJson['section']);
+
             if (Object.keys(breakingSection).length > 0) {
                 var breakingNews = {};
                 var feed = {};
@@ -94,6 +95,14 @@ var AndroidConverter = function() {
                     }
                     premiumFeeds['contextAffiliateId'] = contextAffiliateId;
                 }
+
+                //adTarget
+                var adTargets = [];
+                if (breakingSection['ad-target'] && breakingSection['ad-target'].length > 0){
+                    adTargets = util.mappingArray(breakingSection['ad-target'], mapping['adTargets']);
+                    breakingNews['adTargets'] = adTargets;
+                }
+
                 setting['breakingNews'] = breakingNews;
                 setting['premiumFeeds'] = premiumFeeds;
             } else {
@@ -190,9 +199,6 @@ var AndroidConverter = function() {
         //build the structure that map with properties of parse server
         mappedData = util.updateAndroidMenu(mappedData);
 
-        // build menu structure
-//        mappedData = util.buildAndroidMenuStructure(mappedData, '69');
-
         return mappedData;
     }
 
@@ -260,9 +266,11 @@ var AndroidConverter = function() {
         if (!data || Object.keys(data).length == 0) {
             return {};
         }
+
         // restructure adTarget
         if (data && data.length > 0) {
             for (var i = 0; i < data.length; i++) {
+                data[i]['_suppress-ads'] = false; //set default value
                 if (data[i]['ad-target'] && (data[i]['ad-target'].length > 0)) {
                     data[i]['ad-target'] = data[i]['ad-target'][0];
                 }

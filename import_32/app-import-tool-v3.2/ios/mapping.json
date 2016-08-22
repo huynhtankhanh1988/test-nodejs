@@ -82,6 +82,7 @@
     "_target": "target"
   },
   "adBehavior": {
+    "_suppress-ads": "showAds",
     "network": "adNetwork",
     "_type": "type",
     "_key": "key",
