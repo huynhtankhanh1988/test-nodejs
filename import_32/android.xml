@@ -78,6 +78,9 @@
         <ad-target
                 network-type="verve-dfp-mediation"
                 target="102"/>
+        <ad-target
+                network-type="dfp"
+                target="104"/>
     </adBehavior>
 
 

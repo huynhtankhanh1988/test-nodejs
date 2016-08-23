@@ -68,7 +68,7 @@
     "_type": "type",
     "_key": "key",
     "_partner-key": "partnerKey",
-    "ad-target": "adTarget",
+    "ad-target": "adTargets",
     "_network-type": "networkType",
     "_target": "target",
     "_frn-banner-ads-enabled": "bannerEnabled",

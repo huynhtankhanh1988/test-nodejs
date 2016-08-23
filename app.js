@@ -19,7 +19,6 @@
 
   // this week
     var thisWeekStart = moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD');
-    debugger;
     var thisWeekEnd = moment(now).format('YYYY-MM-DD');
     console.log("thisWeekStart " + thisWeekStart);
     console.log("thisWeekEnd " + thisWeekEnd);

@@ -261,9 +261,6 @@ var IOSConverter = function() {
         if (data && data.length > 0) {
             for (var i = 0; i < data.length; i++) {
                 data[i]['_suppress-ads'] = false; //set default value
-                if (data[i]['ad-target'] && (data[i]['ad-target'].length > 0)) {
-                    data[i]['ad-target'] = data[i]['ad-target'][0];
-                }
             }
         }
 
