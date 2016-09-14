@@ -42,6 +42,7 @@
     "xml2js": "^0.4.16",
     "xmlchecker": "^0.1.0",
     "xmldoc": "^0.4.0",
-    "z-schema": "^3.16.1"
+    "z-schema": "^3.16.1",
+    "superagent": "*"
   }
 }

@@ -16,6 +16,7 @@
   var js2xmlparser = require("js2xmlparser");
   var moment = require('moment');
   var now = moment();
+  var request = require('superagent');
 
   // this week
     var thisWeekStart = moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD');
@@ -32,6 +33,44 @@
     console.log("lastWeekEnd " + lastWeekEnd);
 
     console.log(moment().subtract(10, 'days').calendar());
+
+		request
+		  .get('http://localhost:8081/classes/ItemConfig')
+		  .set('Accept', 'application/json')
+		  .set('X-Parse-Application-Id', 'wPJuyJsloZ14Rx7rUIk1BLLlpmrVt7rHqD5w3iza')
+		  .set('X-Parse-Master-Key', 'MASTER_KEY')
+		  .set('Content-Type', 'application/json')
+		  .end(function(error, data) {
+			if (error) {
+			  console.log(error);
+			} else {
+			  var ddd = data.body.results;
+			  if (ddd && ddd.length > 0) {
+			    var item = {};
+			    for (var i = 0; i < ddd.length; i++) {
+			        if (ddd[i]['xmlUrl']) {
+			            item = ddd[i];
+//			            console.log(ddd[i]);
+			            break;
+			        }
+ 			    }
+ 			    //
+ 			    request
+ 			        .get(item['xmlUrl'])
+// 			        .set('Accept', 'application/xml')
+// 			        .set('X-Parse-Application-Id', 'wPJuyJsloZ14Rx7rUIk1BLLlpmrVt7rHqD5w3iza')
+//                    .set('X-Parse-Master-Key', 'MASTER_KEY')
+                    .end(function(err, result){
+                        if (err) {
+                            console.log("get file error: ");
+                        } else {
+                            console.log(result.body);
+                        }
+                    })
+ 			    //
+			  }
+			}
+		  });
 
 
 

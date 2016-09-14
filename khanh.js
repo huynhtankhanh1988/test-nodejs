@@ -31,6 +31,38 @@ reqGet.on('error', function(e) {
     console.error(e);
 });
 
+
+
+var menuItems = [
+	{
+  	"title": "menu 1",
+    "level": 0,
+    "order": 1
+    "menu": [
+    	{
+        "title": "menu 1.1",
+        "level": 1,
+        "order": 1,
+        "menu": []
+      }
+    ]
+  }
+];
+
+function removeMenuItemHasLevelGt2(menuItemArr) {
+  if (menuItemArr && menuItemArr.length > 0) {
+    for (let i = 0; i < menuItemArr.length; i++) {
+      if (menuItemArr[i]['level'] == 1 && menuItemArr[i]['menu']) {
+        delete menuItemArr[i]['menu'];
+      }
+    }
+  }
+  return menuItemArr;
+}
+
+var a = removeMenuItemHasLevelGt2(menuItems);
+console.log(JSON.stringify(a));
+
 app.listen(3000, function(){
 //console.log("dir: " + process.cwd());
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
