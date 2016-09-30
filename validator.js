@@ -1,11 +1,6 @@
-/**
- * Module dependencies.
- */
-
 var express = require('express')
 var routes = require('./routes');
 var https = require('https');
-var request = require('request');
 var fs = require("fs");
 var bodyParser = require('body-parser');
 var xmlparser = require('express-xml-bodyparser');
@@ -18,25 +13,28 @@ var js2xmlparser = require("js2xmlparser");
 var validate = require("validate.js");
 var morgan = require( 'morgan' );
 
-morgan.token('time', function(req, res){ return req.headers['content-type']; })
+var contentful = require('contentful')
+var util = require('util')
+var client = contentful.createClient({
+  // This is the space ID. A space is like a project folder in Contentful terms
+  space: 'developer_bookshelf',
+  // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
+  accessToken: '0b7f6x59a0'
+});
 
-var morganOption = '[:date[clf]] - :method :url :status';
+// This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
+client.getContentType('book')
+.then(function (entry) {
+  console.log(util.inspect(entry, {depth: null}))
+})
 
-// setup logger
-//app.use( morgan( 'combined' ) );
-app.use( morgan(morganOption));
 
 
 // Configuration
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-// Routes
 
-app.get('/testMorgan', function(request, response){
-    console.trace(response);
 
-    response.json({hello: "hello"});
-});
 
 app.listen(9000, function() {
   console.log("Express server listening on port 9000");

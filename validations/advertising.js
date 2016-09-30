@@ -10,6 +10,11 @@ var bodyParser = require('body-parser');
 var xmlparser = require('express-xml-bodyparser');
 var app = module.exports = express();
 var tv4 = require('tv4');
+
+var Fake = require('./fake.js');
+var fake = new Fake();
+
+fake.print1();
 /**
   Set custom message
 */
