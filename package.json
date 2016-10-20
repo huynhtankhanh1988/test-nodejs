@@ -30,6 +30,7 @@
     "morgan": "1.2.0",
     "multer": "^1.1.0",
     "node-rest-client": "^1.5.1",
+    "pretty-data2": "^0.40.1",
     "superagent": "*",
     "swagger-converter": "^1.4.0",
     "swagger-jack": "^1.6.3",

@@ -5,7 +5,7 @@
   var express = require('express')
   var routes = require('./routes');
   var https = require('https');
-  var request = require('request');
+//  var request = require('request');
   var fs = require("fs");
   var bodyParser = require('body-parser');
   var xmlparser = require('express-xml-bodyparser');
@@ -32,46 +32,17 @@
     console.log("lastWeekStart " + lastWeekStart);
     console.log("lastWeekEnd " + lastWeekEnd);
 
-    console.log(moment().subtract(10, 'days').calendar());
+//    console.log(moment().subtract(10, 'days').calendar());
+//
+//    var pd = require('pretty-data2').pd;
+//
+//    var data = '<root><fname>dfdfgdf00</fname><lname>dsfsdfs</lname></root>';
+//    var a = pd.xml(data);
+//    console.log(a);
 
-		request
-		  .get('http://localhost:8081/classes/ItemConfig')
-		  .set('Accept', 'application/json')
-		  .set('X-Parse-Application-Id', 'wPJuyJsloZ14Rx7rUIk1BLLlpmrVt7rHqD5w3iza')
-		  .set('X-Parse-Master-Key', 'MASTER_KEY')
-		  .set('Content-Type', 'application/json')
-		  .end(function(error, data) {
-			if (error) {
-			  console.log(error);
-			} else {
-			  var ddd = data.body.results;
-			  if (ddd && ddd.length > 0) {
-			    var item = {};
-			    for (var i = 0; i < ddd.length; i++) {
-			        if (ddd[i]['xmlUrl']) {
-			            item = ddd[i];
-//			            console.log(ddd[i]);
-			            break;
-			        }
- 			    }
- 			    //
- 			    request
- 			        .get(item['xmlUrl'])
-// 			        .set('Accept', 'application/xml')
-// 			        .set('X-Parse-Application-Id', 'wPJuyJsloZ14Rx7rUIk1BLLlpmrVt7rHqD5w3iza')
-//                    .set('X-Parse-Master-Key', 'MASTER_KEY')
-                    .end(function(err, result){
-                        if (err) {
-                            console.log("get file error: ");
-                        } else {
-                            console.log(result.body);
-                        }
-                    })
- 			    //
-			  }
-			}
-		  });
 
+    var a = moment("20111031", "YYYYMMDD").format('ll');
+    console.log(a);
 
 
 
