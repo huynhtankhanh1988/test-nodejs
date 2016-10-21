@@ -1,222 +1,4309 @@
 {
-  "affiliateId": "0",
-  "general": {
-    "affiliateName": "",
-    "affiliateId": "0",
-     "availableApps": [
-      "iOS",
-      "iPad",
-      "Android",
-      "Roku",
-      "Apple TV",
-      "Fire TV"
-    ],
-    "cmsCustomer": false,
-    "isAllowsEnableApp": true
-  },
-  "premiumFeeds": {
-    "apiKey": "",
-    "contextAffiliateId": ""
-  },
-  "search": {
-    "baseUrl": "http://sitesearch.worldnow.com/search",
-    "affiliateIds": "",
-	"resultCount": "50"
-  },
-  "pushBehavior": {
-    "enabled": false,
-    "defaultProvider": "parse",
-    "parse": {
-      "appId": "",
-      "appKey": ""
+  "definitions": {
+    "Channel": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 255,
+            "pattern": "\\S",
+            "errorMessage": {
+              "202": "Please input at least one letter."
+            }
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "pattern": "\\S",
+            "errorMessage": {
+              "202": "Please input at least one letter."
+            }
+          }
+        }
+      }
     },
-    "urbanAirship": {
-      "appId": "",
-      "appKey": "",
-      "showInbox" : false,
-	  "productionAppSecret" : ""
+    "PremiumFeeds": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "apiKey": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "contextAffiliateId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        }
+      }
     },
-    "channels": [
-    ]
+    "Search": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "affiliateIds": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resultCount": {
+          "type": [
+            "string",
+            "null",
+            "number"
+          ],
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "Please use only numbers."
+          },
+          "maxLength": 255
+        },
+        "adTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "networkType",
+              "target"
+            ],
+            "properties": {
+              "networkType": {
+                "type": "string",
+                "enum": [
+                  "dfp",
+                  "verve",
+                  "verve-dfp-mediation"
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                }
+              },
+              "target": {
+                "type": "string",
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              }
+            }
+          }
+        }
+      }
     },
-  "analytics": {
-    "googleAnalyticsId": ""
-  },
-  "advertising": {
-    "bannerEnabled": true,
-    "network": "DFP",
-    "networkKey": "",
-    "autoHideBanner": true,
-    "inlineRefresh": 60,
-    "inlineLocation": 3,
-    "inlineEnabled" : true,
-    "video": {
-      "VASTUrl": "",
-      "enabled": false,
-      "randomNumberParameter": "&amp;correlator="
+    "PushBehavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "defaultProvider": {
+          "type": "string",
+          "enum": [
+            "parse",
+            "airship"
+          ],
+          "errorMessage": {
+            "1": "Must be one of [parse, airship]."
+          }
+        },
+        "parse": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "appId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "appKey": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            }
+          }
+        },
+        "urbanAirship": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "appId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "appKey": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "showInbox": {
+              "type": "boolean"
+            },
+            "productionAppSecret": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "productionGcmSender": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            }
+          }
+        },
+        "channels": {
+          "$ref": "#/definitions/Channel"
+        }
+      }
     },
-    "interstitialAds": {
-	  "enabled": false,
-	  "adServer": "DFP",
-	  "adUnitId": "",
-	  "minTimeBetweenAds": 12000,
-	  "interstitialAdSplashEnabled": false,
-	  "interstitialAdFrequency": 1,
-	  "interstitialAdSplashFrequency": 1
-	},
-    "recommendation": {
-      "outbrain": {
-        "enabled": false,
-        "partnerId": "",
-        "outbrainWidgetId": ""
+    "HomePage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 255,
+          "pattern": "\\S",
+          "errorMessage": {
+            "202": "Please input at least one letter."
+          }
+        },
+        "showAds": {
+          "type": "boolean"
+        },
+        "adTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "networkType",
+              "target"
+            ],
+            "properties": {
+              "networkType": {
+                "type": "string",
+                "enum": [
+                  "dfp",
+                  "verve",
+                  "verve-dfp-mediation"
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                }
+              },
+              "target": {
+                "type": "string",
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Analytics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "googleAnalyticsId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        }
+      }
+    },
+    "Advertising": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "adBehaviors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "network",
+              "type",
+              "timeOffset",
+              "enabled",
+              "bannerEnabled",
+              "inlineEnabled",
+              "prerollAdsEnabled",
+              "splashAdsEnabled",
+              "interstitialAdsEnabled"
+            ],
+            "properties": {
+              "excludeDevice": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "iPhone",
+                  "iPad",
+                  null
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [\"\", iPhone, iPad]."
+                }
+              },
+              "bannerEnabled": {
+                "type": "boolean"
+              },
+              "network": {
+                "type": "string",
+                "enum": [
+                  "DFP",
+                  "Verve",
+                  "AdMob"
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [DFP, Verve, AdMob]."
+                }
+              },
+              "networkKey": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              },
+              "inlineAdKey": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              },
+              "autoHideBanner": {
+                "type": "boolean"
+              },
+              "inlineRefresh": {
+                "type": [
+                  "string",
+                  "null",
+                  "number"
+                ],
+                "pattern": "^\\d+$",
+                "errorMessage": {
+                  "202": "Please use only numbers."
+                },
+                "maxLength": 255
+              },
+              "inlineLocation": {
+                "type": [
+                  "string",
+                  "null",
+                  "number"
+                ],
+                "pattern": "^\\d+$",
+                "errorMessage": {
+                  "202": "Please use only numbers."
+                },
+                "maxLength": 255
+              },
+              "inlineEnabled": {
+                "type": "boolean"
+              },
+              "showNativeAds": {
+                "type": "boolean"
+              },
+              "adUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 2048,
+                "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                "errorMessage": {
+                  "202": "You must enter a valid link."
+                }
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "preroll"
+                ],
+                "errorMessage": {
+                  "1": "Must be preroll."
+                }
+              },
+              "vastUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 1024,
+                "pattern": "^((http(s)?|ftp):\\/\\/)(www\\.)?[a-zA-Z0-9-_\\.]+(\\.[a-zA-Z0-9]{2,})([-a-zA-Z0-9:%_\\+.;~#?&//=]*)$",
+                "errorMessage": {
+                  "0": "Expected string.",
+                  "202": "You must enter a valid link."
+                }
+              },
+              "timeOffset": {
+                "type": [
+                  "string",
+                  "integer"
+                ],
+                "default": "0",
+                "pattern": "^\\d+$",
+                "errorMessage": {
+                  "202": "Please use only numbers."
+                },
+                "maxLength": 20
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "randomNumberParameter": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "showAds": {
+                "type": "boolean"
+              },
+              "prerollAdsEnabled": {
+                "type": "boolean"
+              },
+              "splashAdsEnabled": {
+                "type": "boolean"
+              },
+              "interstitialAdsEnabled": {
+                "type": "boolean"
+              },
+              "articleInterstitialAdFrequency": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[1-9]{1}[0-9]{0,}$",
+                "errorMessage": {
+                  "202": "Please use whole numbers only."
+                }
+              },
+              "sectionInterstitialAdFrequency": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[1-9]{1}[0-9]{0,}$",
+                "errorMessage": {
+                  "202": "Please use whole numbers only."
+                }
+              },
+              "splashAdTriggerEvent": {
+                "type": "string",
+                "enum": [
+                  "cold-launch-and-foreground",
+                  "cold-launch",
+                  "foreground"
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [cold-launch-and-foreground, cold-launch, foreground]."
+                }
+              },
+              "splashAdShowDuration": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[1-9]{1}[0-9]{0,}$",
+                "errorMessage": {
+                  "202": "Please use whole numbers only."
+                }
+              },
+              "splashAdShowPercentage": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[1-9][0-9]?$|^100$",
+                "errorMessage": {
+                  "202": "Please use positive integer within 100."
+                }
+              },
+              "splashAdMaxTimeBetweenAds": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[1-9]{1}[0-9]{0,}$",
+                "errorMessage": {
+                  "202": "Please use whole numbers only."
+                }
+              },
+              "splashAdMinTimeBetweenAds": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[1-9]{1}[0-9]{0,}$",
+                "errorMessage": {
+                  "202": "Please use whole numbers only."
+                }
+              },
+              "splashAdTimeout": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[1-9]{1}[0-9]{0,}$",
+                "errorMessage": {
+                  "202": "Please use whole numbers only."
+                }
+              },
+              "adNetworks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "type",
+                    "key"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "dfp",
+                        "verve",
+                        "verve-dfp-mediation"
+                      ],
+                      "errorMessage": {
+                        "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                      }
+                    },
+                    "key": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "pattern": "\\S",
+                      "errorMessage": {
+                        "202": "Please input at least one letter."
+                      }
+                    },
+                    "partnerKey": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "maxLength": 255
+                    },
+                    "gimbalApiKey": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "maxLength": 255
+                    }
+                  }
+                }
+              },
+              "adTargets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "networkType",
+                    "target"
+                  ],
+                  "properties": {
+                    "networkType": {
+                      "type": "string",
+                      "enum": [
+                        "dfp",
+                        "verve",
+                        "verve-dfp-mediation"
+                      ],
+                      "errorMessage": {
+                        "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                      }
+                    },
+                    "target": {
+                      "type": "string",
+                      "pattern": "\\S",
+                      "errorMessage": {
+                        "202": "Please input at least one letter."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "recommendation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "outbrain": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "partnerId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                },
+                "outbrainWidgetId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "BreakingNews": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "featureId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "Please use only numbers."
+          }
+        },
+        "modifier": {
+          "type": "string",
+          "enum": [
+            "stories"
+          ],
+          "errorMessage": {
+            "1": "Must be 'stories'."
+          }
+        },
+        "searchAffiliateId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "appVersion": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "itemsOnHomePage": {
+          "type": [
+            "string",
+            "null",
+            "number"
+          ],
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "Please use only numbers."
+          },
+          "maxLength": 255
+        },
+        "excludeFromPager": {
+          "type": "boolean"
+        },
+        "showAds": {
+          "type": "boolean"
+        },
+        "adTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "networkType",
+              "target"
+            ],
+            "properties": {
+              "networkType": {
+                "type": "string",
+                "enum": [
+                  "dfp",
+                  "verve",
+                  "verve-dfp-mediation"
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                }
+              },
+              "target": {
+                "type": "string",
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Weather": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "general": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "showAds": {
+              "type": "boolean"
+            },
+            "showRadarInNavMenu": {
+              "type": "boolean"
+            }
+          }
+        },
+        "adTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "networkType",
+              "target"
+            ],
+            "properties": {
+              "networkType": {
+                "type": "string",
+                "enum": [
+                  "dfp",
+                  "verve",
+                  "verve-dfp-mediation"
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                }
+              },
+              "target": {
+                "type": "string",
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              }
+            }
+          }
+        },
+        "wsi": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "memberId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "serviceId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "mapId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "sdkKey": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            }
+          }
+        },
+        "severeWeather": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "basic": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "fgColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "bgColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                }
+              }
+            },
+            "detailed": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "fgColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "bgColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "conditions": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                }
+              }
+            },
+            "sunMoon": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "fgColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "bgColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "textForecast": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "feedUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048,
+              "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+              "errorMessage": {
+                "202": "You must enter a valid link."
+              }
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "dailyForecast": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "feedUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048,
+              "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+              "errorMessage": {
+                "202": "You must enter a valid link."
+              }
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "hourlyForecast": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "feedUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048,
+              "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+              "errorMessage": {
+                "202": "You must enter a valid link."
+              }
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "videoForecast": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "feedUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048,
+              "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+              "errorMessage": {
+                "202": "You must enter a valid link."
+              }
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "interactiveRadar": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "showAds": {
+              "type": "boolean"
+            },
+            "layer": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            }
+          }
+        },
+        "weatherNews": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "feedUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048,
+              "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+              "errorMessage": {
+                "202": "You must enter a valid link."
+              }
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "weatherImages": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "feedUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048,
+              "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+              "errorMessage": {
+                "202": "You must enter a valid link."
+              }
+            },
+            "fgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "additionalOptions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "disableWeatherLinkInBranding": {
+              "type": "boolean"
+            },
+            "hideHilo": {
+              "type": "boolean"
+            }
+          }
+        },
+        "weatherLocations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "zipCode",
+              "latitude",
+              "longitude",
+              "altitude",
+              "isDefault"
+            ],
+            "properties": {
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              },
+              "code": {
+                "type": "string",
+                "maxLength": 255,
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              },
+              "zipCode": {
+                "type": [
+                  "string",
+                  "number"
+                ],
+                "pattern": "^\\d{1,10}$",
+                "errorMessage": {
+                  "202": "Please enter a valid zip code."
+                }
+              },
+              "latitude": {
+                "type": [
+                  "string",
+                  "number"
+                ],
+                "pattern": "^(\\+|-)?(?:90(?:(?:\\.0{1,10})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,10})?))$",
+                "errorMessage": {
+                  "202": "Please enter a valid latitude."
+                }
+              },
+              "longitude": {
+                "type": [
+                  "string",
+                  "number"
+                ],
+                "pattern": "^(\\+|-)?(?:180(?:(?:\\.0{1,10})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,10})?))$",
+                "errorMessage": {
+                  "202": "Please enter a valid longitude"
+                }
+              },
+              "altitude": {
+                "type": "string",
+                "pattern": "^(-|\\+)?\\d{1,}$",
+                "errorMessage": {
+                  "202": "Please use only number."
+                }
+              },
+              "isDefault": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "weatherLayout": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              },
+              "label": {
+                "type": "string",
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "zipCode",
+          "latitude",
+          "longitude",
+          "altitude",
+          "isDefault"
+        ],
+        "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "state": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "stateAbbr": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 255,
+            "pattern": "\\S",
+            "errorMessage": {
+              "202": "Please input at least one letter."
+            }
+          },
+          "zipCode": {
+            "type": [
+              "string",
+              "number"
+            ],
+            "pattern": "^\\d{1,10}$",
+            "errorMessage": {
+              "202": "Please enter a valid zip code."
+            }
+          },
+          "latitude": {
+            "type": [
+              "string",
+              "number"
+            ],
+            "pattern": "^(\\+|-)?(?:90(?:(?:\\.0{1,10})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,10})?))$",
+            "errorMessage": {
+              "202": "Please enter a valid latitude."
+            }
+          },
+          "longitude": {
+            "type": [
+              "string",
+              "number"
+            ],
+            "pattern": "^(\\+|-)?(?:180(?:(?:\\.0{1,10})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,10})?))$",
+            "errorMessage": {
+              "202": "Please enter a valid longitude"
+            }
+          },
+          "altitude": {
+            "type": "string",
+            "pattern": "^(-|\\+)?\\d{1,}$",
+            "errorMessage": {
+              "202": "Please use only number."
+            }
+          },
+          "isDefault": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "Traffic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "general": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "showAds": {
+              "type": "boolean"
+            }
+          }
+        },
+        "adTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "networkType",
+              "target"
+            ],
+            "properties": {
+              "networkType": {
+                "type": "string",
+                "enum": [
+                  "dfp",
+                  "verve",
+                  "verve-dfp-mediation"
+                ],
+                "errorMessage": {
+                  "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                }
+              },
+              "target": {
+                "type": "string",
+                "pattern": "\\S",
+                "errorMessage": {
+                  "202": "Please input at least one letter."
+                }
+              }
+            }
+          }
+        },
+        "trafficLocations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "isDefault",
+              "defaultCenterLat",
+              "defaultCenterLong",
+              "defaultAltitude"
+            ],
+            "properties": {
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              },
+              "isDefault": {
+                "type": "boolean"
+              },
+              "defaultCenterLat": {
+                "type": "string",
+                "pattern": "^(\\+|-)?(?:90(?:(?:\\.0{1,10})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,10})?))$",
+                "errorMessage": {
+                  "202": "Please enter a valid latitude."
+                }
+              },
+              "defaultCenterLong": {
+                "type": "string",
+                "pattern": "^(\\+|-)?(?:180(?:(?:\\.0{1,10})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,10})?))$",
+                "errorMessage": {
+                  "202": "Please enter a valid longitude"
+                }
+              },
+              "defaultAltitude": {
+                "type": "string",
+                "pattern": "^(-|\\+)?\\d{1,}$",
+                "errorMessage": {
+                  "202": "Please use only number."
+                }
+              },
+              "defaultOverlays": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              },
+              "defaultLayer": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "Connect": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "newsTipEmail": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255,
+          "pattern": "^[-!#$%&'*+\\/0-9=?A-Z^_a-z{|}~](\\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-?[a-zA-Z0-9])*(\\.[a-zA-Z](-?[a-zA-Z0-9])*)+$",
+          "errorMessage": {
+            "202": "Invalid email."
+          }
+        },
+        "sharePhotoEmail": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255,
+          "pattern": "^[-!#$%&'*+\\/0-9=?A-Z^_a-z{|}~](\\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-?[a-zA-Z0-9])*(\\.[a-zA-Z](-?[a-zA-Z0-9])*)+$",
+          "errorMessage": {
+            "202": "Invalid email."
+          }
+        },
+        "bugReportEmail": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255,
+          "pattern": "^[-!#$%&'*+\\/0-9=?A-Z^_a-z{|}~](\\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-?[a-zA-Z0-9])*(\\.[a-zA-Z](-?[a-zA-Z0-9])*)+$",
+          "errorMessage": {
+            "202": "Invalid email."
+          }
+        },
+        "callUsPhone": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}(;\\d+)?$",
+          "maxLength": 50,
+          "errorMessage": {
+            "202": "Invalid phone number, ex: '704-374-3500;1'"
+          }
+        },
+        "aboutUsUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "privacyPolicyUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "tosUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "facebook": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "facebookAppId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "facebookSecret": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "facebookUsername": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            }
+          }
+        },
+        "twitterhandle": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "instagramUsername": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "blogUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "secondaryBlogUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "ugcUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        }
+      }
+    },
+    "Video": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "closedCaptionUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048,
+          "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+          "errorMessage": {
+            "202": "You must enter a valid link."
+          }
+        },
+        "liveVideoUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048
+        },
+        "liveStreamApiKey": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Scripts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "\\S",
+        "errorMessage": {
+          "202": "Please input at least one letter."
+        }
+      }
+    },
+    "Spark": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "content": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "StoreAccounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "apple": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "userId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "password": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 6
+            }
+          }
+        },
+        "googlePlay": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "userId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "password": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 6
+            }
+          }
+        },
+        "roku": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "userId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "password": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 6
+            }
+          }
+        },
+        "amazon": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "userId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            },
+            "password": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 6
+            }
+          }
+        }
+      }
+    },
+    "StyleConfig": {
+      "type": "object",
+      "required": [
+        "affiliateId"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "affiliateId": {
+          "type": "string",
+          "maxLength": 255,
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "AffiliateId should be integer data."
+          }
+        },
+        "fgColor1": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^#[A-Fa-f0-9]{6}$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "fgColor2": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^#[A-Fa-f0-9]{6}$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "bgColor1": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^#[A-Fa-f0-9]{6}$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "bgColor2": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^#[A-Fa-f0-9]{6}$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "breakingNewsColor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^#[A-Fa-f0-9]{6}$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "font1": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Sans Serif",
+            "Serif",
+            "Serif / Sans Serif",
+            "MerriWeather Averta",
+            null
+          ],
+          "errorMessage": {
+            "1": "Must be one of [Sans Serif, Serif, Serif / Sans Serif,MerriWeather Averta]."
+          }
+        },
+        "headerFontColor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^#[A-Fa-f0-9]{6}$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "headerBackgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^#[A-Fa-f0-9]{6}$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "weatherBackgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{6})$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "weatherForegroundColor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{6})$",
+          "errorMessage": {
+            "202": "Invalid hex color."
+          }
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "graphics": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "logo": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "favicon": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "stylesheet": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "header": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "menuBgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "subMenuBgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "textColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            }
+          }
+        },
+        "footer": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "bgColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "linkColor": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^#[A-Fa-f0-9]{6}$",
+              "errorMessage": {
+                "202": "Invalid hex color."
+              }
+            },
+            "privacyStatementUri": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "termsOfServiceUri": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "ItemConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "affiliateId",
+        "isActive",
+        "name",
+        "appType",
+        "platform",
+        "uniqueAppId"
+      ],
+      "properties": {
+        "affiliateId": {
+          "type": "string",
+          "maxLength": 255,
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "AffiliateId should be integer data."
+          }
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "isPlatformActive": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9\\s]+$",
+          "errorMessage": {
+            "202": "Please use only letters (a-z), numbers and spaces."
+          }
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "appType": {
+          "type": "string",
+          "maxLength": 255,
+          "enum": [
+            "iPhone",
+            "Android",
+            "iPad",
+            "Roku",
+            "Apple TV",
+            "Fire TV",
+            "web"
+          ],
+          "errorMessage": {
+            "1": "Must be one of [iPhone, Android, iPad, Roku, Apple TV, Fire TV, web]."
+          }
+        },
+        "platform": {
+          "type": "string",
+          "maxLength": 255,
+          "enum": [
+            "iOS",
+            "Android",
+            "iPad",
+            "Roku",
+            "Apple TV",
+            "Fire TV",
+            "web"
+          ],
+          "errorMessage": {
+            "1": "Must be one of [iOS, Android, iPad, Roku, Apple TV, Fire TV, web]."
+          }
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "hostNames": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
+            "errorMessage": {
+              "202": "Please input a valid host name."
+            }
+          }
+        },
+        "theme": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "style": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "fgColor1": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "fgColor2": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "bgColor1": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "bgColor2": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "breakingNewsColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "font1": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Sans Serif",
+                    "Serif",
+                    "Serif / Sans Serif",
+                    "MerriWeather Averta",
+                    null
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [Sans Serif, Serif, Serif / Sans Serif,MerriWeather Averta]."
+                  }
+                },
+                "weatherBackgroundColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^(#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{6})$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "weatherForegroundColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^(#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{6})$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "headerFontColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "headerBackgroundColor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^#[A-Fa-f0-9]{6}$",
+                  "errorMessage": {
+                    "202": "Invalid hex color."
+                  }
+                },
+                "graphics": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "logo": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "favicon": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "stylesheet": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "header": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "bgColor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^#[A-Fa-f0-9]{6}$",
+                      "errorMessage": {
+                        "202": "Invalid hex color."
+                      }
+                    },
+                    "menuBgColor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^#[A-Fa-f0-9]{6}$",
+                      "errorMessage": {
+                        "202": "Invalid hex color."
+                      }
+                    },
+                    "subMenuBgColor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^#[A-Fa-f0-9]{6}$",
+                      "errorMessage": {
+                        "202": "Invalid hex color."
+                      }
+                    },
+                    "textColor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^#[A-Fa-f0-9]{6}$",
+                      "errorMessage": {
+                        "202": "Invalid hex color."
+                      }
+                    }
+                  }
+                },
+                "footer": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "bgColor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^#[A-Fa-f0-9]{6}$",
+                      "errorMessage": {
+                        "202": "Invalid hex color."
+                      }
+                    },
+                    "linkColor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^#[A-Fa-f0-9]{6}$",
+                      "errorMessage": {
+                        "202": "Invalid hex color."
+                      }
+                    },
+                    "privacyStatementUri": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "termsOfServiceUri": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 255
+            }
+          }
+        },
+        "setting": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "premiumFeeds": {
+              "$ref": "#/definitions/PremiumFeeds"
+            },
+            "search": {
+              "$ref": "#/definitions/Search"
+            },
+            "pushBehavior": {
+              "$ref": "#/definitions/PushBehavior"
+            },
+            "homePage": {
+              "$ref": "#/definitions/HomePage"
+            },
+            "analytics": {
+              "$ref": "#/definitions/Analytics"
+            },
+            "advertising": {
+              "$ref": "#/definitions/Advertising"
+            },
+            "breakingNews": {
+              "$ref": "#/definitions/BreakingNews"
+            },
+            "weather": {
+              "$ref": "#/definitions/Weather"
+            },
+            "locations": {
+              "$ref": "#/definitions/Locations"
+            },
+            "traffic": {
+              "$ref": "#/definitions/Traffic"
+            },
+            "connect": {
+              "$ref": "#/definitions/Connect"
+            },
+            "video": {
+              "$ref": "#/definitions/Video"
+            },
+            "scripts": {
+              "$ref": "#/definitions/Scripts"
+            },
+            "spark": {
+              "$ref": "#/definitions/Spark"
+            },
+            "storeAccounts": {
+              "$ref": "#/definitions/StoreAccounts"
+            },
+            "general": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "isAllowsEnableApp": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "themeType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255,
+          "enum": [
+            "global",
+            "custom"
+          ],
+          "errorMessage": {
+            "1": "Must be one of [global, custom]"
+          }
+        },
+        "menuId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "routes": {
+          "type": "object"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "auditTrail": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "creationDate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            },
+            "creationBy": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "lastEditedDate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            },
+            "lastEditedBy": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "publishBy": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "publishAt": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            }
+          }
+        },
+        "publishedList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "frameworkVersion": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "manifestFormat": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "frameworkVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "manifestFormat": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "downloads": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "manifestFormat": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "frameworkVersion": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "uniqueAppId": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "SettingConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "affiliateId"
+      ],
+      "properties": {
+        "affiliateId": {
+          "type": "string",
+          "maxLength": 255,
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "AffiliateId should be integer data."
+          }
+        },
+        "general": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "displayName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "affiliateName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "affiliateId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^\\d+$",
+              "errorMessage": {
+                "202": "AffiliateId should be integer data."
+              }
+            },
+            "availableApps": {
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              }
+            },
+            "cmsCustomer": {
+              "type": "boolean"
+            },
+            "isAllowsEnableApp": {
+              "type": "boolean"
+            }
+          }
+        },
+        "premiumFeeds": {
+          "$ref": "#/definitions/PremiumFeeds"
+        },
+        "search": {
+          "$ref": "#/definitions/Search"
+        },
+        "pushBehavior": {
+          "$ref": "#/definitions/PushBehavior"
+        },
+        "homePage": {
+          "$ref": "#/definitions/HomePage"
+        },
+        "analytics": {
+          "$ref": "#/definitions/Analytics"
+        },
+        "advertising": {
+          "$ref": "#/definitions/Advertising"
+        },
+        "breakingNews": {
+          "$ref": "#/definitions/BreakingNews"
+        },
+        "video": {
+          "$ref": "#/definitions/Video"
+        },
+        "weather": {
+          "$ref": "#/definitions/Weather"
+        },
+        "locations": {
+          "$ref": "#/definitions/Locations"
+        },
+        "traffic": {
+          "$ref": "#/definitions/Traffic"
+        },
+        "connect": {
+          "$ref": "#/definitions/Connect"
+        },
+        "scripts": {
+          "$ref": "#/definitions/Scripts"
+        },
+        "spark": {
+          "$ref": "#/definitions/Spark"
+        },
+        "storeAccounts": {
+          "$ref": "#/definitions/StoreAccounts"
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastEditedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "MenuConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "affiliateId",
+        "name",
+        "menuId"
+      ],
+      "properties": {
+        "id": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "menuId": {
+          "type": "number"
+        },
+        "affiliateId": {
+          "type": "string",
+          "maxLength": 255,
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "AffiliateId should be integer data."
+          }
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "menu": {
+          "$ref": "#/definitions/MenuItem"
+        },
+        "auditTrail": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "creationDate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            },
+            "creationBy": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "lastEditedDate": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            },
+            "lastEditedBy": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "MenuItem": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "type",
+          "typeFamily"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "href": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "level": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "order": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "typeFamily": {
+            "type": "string",
+            "enum": [
+              "category_type",
+              "link_type",
+              "feed_type",
+              "slideshow_type",
+              "page_type"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [category_type, link_type, feed_type, slideshow_type, page_type]."
+            }
+          },
+          "showInVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "openInBrowser": {
+            "type": "boolean"
+          },
+          "adTargets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "networkType",
+                "target"
+              ],
+              "properties": {
+                "networkType": {
+                  "type": "string",
+                  "enum": [
+                    "dfp",
+                    "verve",
+                    "verve-dfp-mediation"
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                  }
+                },
+                "target": {
+                  "type": "string",
+                  "pattern": "\\S",
+                  "errorMessage": {
+                    "202": "Please input at least one letter."
+                  }
+                }
+              }
+            }
+          },
+          "feed": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                "errorMessage": {
+                  "202": "You must enter a valid link."
+                }
+              },
+              "premiumUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                "errorMessage": {
+                  "202": "You must enter a valid link."
+                }
+              },
+              "itemQuerySuffix": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              }
+            }
+          },
+          "feeds": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                  "errorMessage": {
+                    "202": "You must enter a valid link."
+                  }
+                },
+                "premiumUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                  "errorMessage": {
+                    "202": "You must enter a valid link."
+                  }
+                },
+                "itemQuerySuffix": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                },
+                "headline": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                },
+                "parentContentType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "categories",
+                    "widgets",
+                    null
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [categories, widgets]."
+                  }
+                },
+                "childContentType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "stories",
+                    "clips",
+                    null
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [stories, clips]."
+                  }
+                },
+                "parentContentId": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "contentPageUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                }
+              }
+            }
+          },
+          "showAds": {
+            "type": "boolean"
+          },
+          "excludeFromPager": {
+            "type": "boolean"
+          },
+          "itemsInHomePage": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "headerFontColor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^#[A-Fa-f0-9]{6}$",
+            "errorMessage": {
+              "202": "Invalid hex color."
+            }
+          },
+          "headerBackgroundColor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^#[A-Fa-f0-9]{6}$",
+            "errorMessage": {
+              "202": "Invalid hex color."
+            }
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "category",
+              "link",
+              "feed",
+              "slideshow",
+              "page"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [category, link, feed, slideshow, page]."
+            }
+          },
+          "viewLayout": {
+            "type": "string",
+            "enum": [
+              "list",
+              "web-link",
+              "web-view"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [list, web-link, web-view]."
+            }
+          },
+          "layoutType": {
+            "type": "string",
+            "enum": [
+              "itemVerticalList",
+              "heroCarousel",
+              "categoryBlock",
+              "categoryCarousel",
+              "liveVideo"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [itemVerticalList, heroCarousel, categoryBlock, categoryCarousel]."
+            }
+          },
+          "backgroundImageUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+            "errorMessage": {
+              "202": "You must enter a valid link."
+            }
+          },
+          "titleImageUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+            "errorMessage": {
+              "202": "You must enter a valid link."
+            }
+          },
+          "iconUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "iconResource": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "searchAffiliateId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "categoryNo": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "categoryType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "categoryPageUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "menu": {
+            "$ref": "#/definitions/ChildMenuItem"
+          }
+        }
+      }
+    },
+    "SocialPublishing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "affiliateId",
+        "affiliateName"
+      ],
+      "properties": {
+        "affiliateId": {
+          "type": "string",
+          "maxLength": 255,
+          "pattern": "^\\d+$",
+          "errorMessage": {
+            "202": "AffiliateId should be integer data."
+          }
+        },
+        "affiliateName": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "bitly": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "token": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "socialTools": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "publishing": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "twitter": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "accountName",
+                      "consumerKey",
+                      "consumerSecret",
+                      "accessTokenKey",
+                      "accessTokenSecret"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "maxLength": 255
+                      },
+                      "accountName": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "pattern": "\\S",
+                        "errorMessage": {
+                          "202": "Please input at least one letter."
+                        }
+                      },
+                      "consumerKey": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "consumerSecret": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "accessTokenKey": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "accessTokenSecret": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "expireToken": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "enableAutoPublish": {
+                        "type": "boolean"
+                      },
+                      "userName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "maxLength": 255
+                      },
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "socialName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "avatar": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "linkedIn": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "accountName",
+                      "clientId",
+                      "clientSecret"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "maxLength": 255
+                      },
+                      "accountName": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "pattern": "\\S",
+                        "errorMessage": {
+                          "202": "Please input at least one letter."
+                        }
+                      },
+                      "companyId": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "maxLength": 255
+                      },
+                      "clientId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "clientSecret": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "accessToken": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "expireToken": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "enableAutoPublish": {
+                        "type": "boolean"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "pageId": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "socialName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "avatar": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "facebook": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "accountName",
+                      "pageId",
+                      "clientId",
+                      "clientSecret",
+                      "accessToken"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "maxLength": 255
+                      },
+                      "accountName": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "pattern": "\\S",
+                        "errorMessage": {
+                          "202": "Please input at least one letter."
+                        }
+                      },
+                      "pageId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "clientId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "clientSecret": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      },
+                      "accessToken": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "expireToken": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "enableAutoPublish": {
+                        "type": "boolean"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "instantArticle": {
+                        "type": "boolean"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "socialName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "avatar": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "nationalAdsSplit": {
+                        "type": "string",
+                        "pattern": "^[0-9][0-9]?$|^100$",
+                        "errorMessage": {
+                          "202": "Please use positive integer within 100."
+                        }
+                      },
+                      "localAdsSplit": {
+                        "type": "string",
+                        "pattern": "^[0-9][0-9]?$|^100$",
+                        "errorMessage": {
+                          "202": "Please use positive integer within 100."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "WidgetConfig": {
+      "type": "object",
+      "required": [
+        "affiliateId"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "affiliateId": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "affiliateName": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "widgets": {
+          "type": "array",
+          "additionalProperties": false,
+          "items": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "col": {
+                  "type": "string"
+                },
+                "componentType": {
+                  "type": "string"
+                },
+                "snapshotModule": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "style"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "style": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "snapshotItems": {
+                      "type": "array",
+                      "additionalProperties": false,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "author": {
+                            "type": "string",
+                            "maxLength": 255
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "draft",
+                              "published",
+                              "breaking",
+                              "scheduled"
+                            ],
+                            "errorMessage": {
+                              "1": "Must be one of [draft, published, breaking, scheduled]."
+                            }
+                          },
+                          "time": {
+                            "type": "string",
+                            "maxLength": 255
+                          },
+                          "style": {
+                            "type": "string",
+                            "enum": [
+                              "transparent",
+                              "filled",
+                              "light",
+                              "dark",
+                              "urgent"
+                            ],
+                            "errorMessage": {
+                              "1": "Must be one of [transparent, filled, light, dark, urgent]."
+                            }
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "cms",
+                              "analytics",
+                              "weather"
+                            ],
+                            "errorMessage": {
+                              "1": "Must be one of [cms, analytics, weather]."
+                            }
+                          },
+                          "order": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "ChildMenuItem": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "type",
+          "typeFamily"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "href": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "level": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "order": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "typeFamily": {
+            "type": "string",
+            "enum": [
+              "category_type",
+              "link_type",
+              "feed_type",
+              "slideshow_type",
+              "page_type"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [category_type, link_type, feed_type, slideshow_type, page_type]."
+            }
+          },
+          "showInVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "openInBrowser": {
+            "type": "boolean"
+          },
+          "adTargets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "networkType",
+                "target"
+              ],
+              "properties": {
+                "networkType": {
+                  "type": "string",
+                  "enum": [
+                    "dfp",
+                    "verve",
+                    "verve-dfp-mediation"
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                  }
+                },
+                "target": {
+                  "type": "string",
+                  "pattern": "\\S",
+                  "errorMessage": {
+                    "202": "Please input at least one letter."
+                  }
+                }
+              }
+            }
+          },
+          "feed": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                "errorMessage": {
+                  "202": "You must enter a valid link."
+                }
+              },
+              "premiumUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                "errorMessage": {
+                  "202": "You must enter a valid link."
+                }
+              },
+              "itemQuerySuffix": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              }
+            }
+          },
+          "feeds": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                  "errorMessage": {
+                    "202": "You must enter a valid link."
+                  }
+                },
+                "premiumUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                  "errorMessage": {
+                    "202": "You must enter a valid link."
+                  }
+                },
+                "itemQuerySuffix": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                },
+                "headline": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                },
+                "parentContentType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "categories",
+                    "widgets",
+                    null
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [categories, widgets]."
+                  }
+                },
+                "childContentType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "stories",
+                    "clips",
+                    null
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [stories, clips]."
+                  }
+                },
+                "parentContentId": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "contentPageUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                }
+              }
+            }
+          },
+          "showAds": {
+            "type": "boolean"
+          },
+          "excludeFromPager": {
+            "type": "boolean"
+          },
+          "itemsInHomePage": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "headerFontColor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^#[A-Fa-f0-9]{6}$",
+            "errorMessage": {
+              "202": "Invalid hex color."
+            }
+          },
+          "headerBackgroundColor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^#[A-Fa-f0-9]{6}$",
+            "errorMessage": {
+              "202": "Invalid hex color."
+            }
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "category",
+              "link",
+              "feed",
+              "slideshow",
+              "page"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [category, link, feed, slideshow, page]."
+            }
+          },
+          "viewLayout": {
+            "type": "string",
+            "enum": [
+              "list",
+              "web-link",
+              "web-view"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [list, web-link, web-view]."
+            }
+          },
+          "layoutType": {
+            "type": "string",
+            "enum": [
+              "itemVerticalList",
+              "heroCarousel",
+              "categoryBlock",
+              "categoryCarousel",
+              "liveVideo"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [itemVerticalList, heroCarousel, categoryBlock, categoryCarousel]."
+            }
+          },
+          "backgroundImageUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+            "errorMessage": {
+              "202": "You must enter a valid link."
+            }
+          },
+          "titleImageUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+            "errorMessage": {
+              "202": "You must enter a valid link."
+            }
+          },
+          "iconUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "iconResource": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "searchAffiliateId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "categoryNo": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "categoryType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "categoryPageUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "menu": {
+            "$ref": "#/definitions/ChildMenuItemLv2"
+          }
+        }
+      }
+    },
+    "ChildMenuItemLv2": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "type",
+          "typeFamily"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "href": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "level": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "order": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "typeFamily": {
+            "type": "string",
+            "enum": [
+              "category_type",
+              "link_type",
+              "feed_type",
+              "slideshow_type",
+              "page_type"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [category_type, link_type, feed_type, slideshow_type, page_type]."
+            }
+          },
+          "showInVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "openInBrowser": {
+            "type": "boolean"
+          },
+          "adTargets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "networkType",
+                "target"
+              ],
+              "properties": {
+                "networkType": {
+                  "type": "string",
+                  "enum": [
+                    "dfp",
+                    "verve",
+                    "verve-dfp-mediation"
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [dfp, verve, verve-dfp-mediation]."
+                  }
+                },
+                "target": {
+                  "type": "string",
+                  "pattern": "\\S",
+                  "errorMessage": {
+                    "202": "Please input at least one letter."
+                  }
+                }
+              }
+            }
+          },
+          "feed": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                "errorMessage": {
+                  "202": "You must enter a valid link."
+                }
+              },
+              "premiumUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                "errorMessage": {
+                  "202": "You must enter a valid link."
+                }
+              },
+              "itemQuerySuffix": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              }
+            }
+          },
+          "feeds": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                  "errorMessage": {
+                    "202": "You must enter a valid link."
+                  }
+                },
+                "premiumUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+                  "errorMessage": {
+                    "202": "You must enter a valid link."
+                  }
+                },
+                "itemQuerySuffix": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                },
+                "headline": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                },
+                "parentContentType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "categories",
+                    "widgets",
+                    null
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [categories, widgets]."
+                  }
+                },
+                "childContentType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "stories",
+                    "clips",
+                    null
+                  ],
+                  "errorMessage": {
+                    "1": "Must be one of [stories, clips]."
+                  }
+                },
+                "parentContentId": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "contentPageUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 255
+                }
+              }
+            }
+          },
+          "showAds": {
+            "type": "boolean"
+          },
+          "excludeFromPager": {
+            "type": "boolean"
+          },
+          "itemsInHomePage": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "headerFontColor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^#[A-Fa-f0-9]{6}$",
+            "errorMessage": {
+              "202": "Invalid hex color."
+            }
+          },
+          "headerBackgroundColor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^#[A-Fa-f0-9]{6}$",
+            "errorMessage": {
+              "202": "Invalid hex color."
+            }
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "category",
+              "link",
+              "feed",
+              "slideshow",
+              "page"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [category, link, feed, slideshow, page]."
+            }
+          },
+          "viewLayout": {
+            "type": "string",
+            "enum": [
+              "list",
+              "web-link",
+              "web-view"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [list, web-link, web-view]."
+            }
+          },
+          "layoutType": {
+            "type": "string",
+            "enum": [
+              "itemVerticalList",
+              "heroCarousel",
+              "categoryBlock",
+              "categoryCarousel",
+              "liveVideo"
+            ],
+            "errorMessage": {
+              "1": "Must be one of [itemVerticalList, heroCarousel, categoryBlock, categoryCarousel]."
+            }
+          },
+          "backgroundImageUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+            "errorMessage": {
+              "202": "You must enter a valid link."
+            }
+          },
+          "titleImageUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "/^(https?|ftp):\\/\\/(((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:)*@)?(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|((([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?)(:\\d*)?)(\\/((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)+(\\/(([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)*)*)?)?(\\?((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|[\\uE000-\\uF8FF]|\\/|\\?)*)?(\\#((([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(%[\\da-f]{2})|[!\\$&'\\(\\)\\*\\+,;=]|:|@)|\\/|\\?)*)?$/i",
+            "errorMessage": {
+              "202": "You must enter a valid link."
+            }
+          },
+          "iconUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "iconResource": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "searchAffiliateId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "categoryNo": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "categoryType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "categoryPageUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
       }
     }
   },
-  "breakingNews": {
-    "feedUrl": "",
-    "appVersion": "list",
-    "itemsOnHomePage": "",
-    "showAds": true,
-    "adTarget": ""
-  },
-  "video": {
-    "closedCaptionUrl": "",
-    "liveVideoUrl": ""
-  } ,
-  "weather": {
-    "general": {
-      "enabled": true,
-      "showAds": true
-    },
-    "wsi": {
-      "memberId": "",
-      "serviceId": "",
-      "mapId": "",
-      "sdkKey": ""
-    },
-    "severeWeather": {
-      "enabled": true,
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "conditions": {
-      "basic": {
-        "enabled": true,
-        "fgColor": "",
-        "bgColor": ""
-      },
-      "detailed": {
-        "enabled": true,
-        "fgColor": "",
-        "bgColor": "",
-        "conditions": "Feels Like, Humidity, Wind Speed, Pressure"
-      },
-      "sunMoon": {
-        "enabled": true,
-        "fgColor": "",
-        "bgColor": ""
-      }
-    },
-    "textForecast": {
-      "enabled": true,
-      "feedUrl": "",
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "dailyForecast": {
-      "enabled": true,
-      "feedUrl": "",
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "hourlyForecast": {
-      "enabled": true,
-      "feedUrl": "",
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "videoForecast": {
-      "enabled": true,
-      "feedUrl": "",
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "interactiveRadar": {
-      "enabled": true,
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "weatherNews": {
-      "enabled": true,
-      "feedUrl": "",
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "weatherImages": {
-      "enabled": true,
-      "feedUrl": "",
-      "fgColor": "",
-      "bgColor": ""
-    },
-    "additionalOptions": {
-      "disableWeatherLinkInBranding": false,
-      "hideHilo": false
-    },
-    "weatherLocations": [
-      {
-        "name": "",
-        "code": "",
-        "zipCode": "",
-        "latitude": "",
-        "longitude": "",
-        "altitude": "20000",
-		"isDefault" : false
-      }
-    ]
-  },
-  "traffic": {
-    "enabled": true,
-    "defaultCenterLat": "",
-    "defaultCenterLong": "",
-    "defaultAltitude": "55000",
-    "defaultOverlays": "TrafficIncidents,TrafficFlows",
-    "defaultLayer": "Radar"
-  },
-  "connect": {
-    "newsTipEmail": "",
-    "sharePhotoEmail": "",
-    "bugReportEmail": "news-app-support@franklyinc.com",
-    "callUsPhone": "",
-    "aboutUsUrl": "",
-    "privacyPolicyUrl": "",
-    "tosUrl": "",
-    "facebook": {
-      "facebookAppId": "",
-      "facebookSecret": "",
-      "facebookUsername": ""
-    },
-    "twitterhandle": "",
-    "instagramUsername": "",
-    "blogUrl": "",
-    "secondaryBlogUrl": "",
-    "ugcUrl": ""
-  },
-  "storeAccounts": {
-    "apple": {
-      "userId": "",
-      "password": ""
-    },
-    "googlePlay": {
-      "userId": "",
-      "password": ""
-    },
-    "roku": {
-      "userId": "",
-      "password": ""
-    },
-    "amazon": {
-      "userId": "",
-      "password": ""
-    }
-  }
+  "lastTime": 1477041324152
 }

@@ -37,7 +37,7 @@ var ct1 = {
         }
 }
 
-var data1 = ["WWW.GOOGLE.COM", "google.com"];
+var data1 = ["WWW.GOOGLE.COM", "12"];
 
 var result1 = tv4.validateMultiple(data1, ct1);
 console.log(result1.errors);
