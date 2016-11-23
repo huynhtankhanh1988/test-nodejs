@@ -23,21 +23,42 @@ tv4.setErrorReporter(function (error, data, schema) {
 });
 
 
-
+//  "pattern": "^/([a-zA-Z0-9]|(:[a-zA-Z0-9]))$",
 var ct1 = {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
-            "type": "string",
-            "pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
-            "errorMessage": {
-                "202": "Please input a valid host name.",
-                "402": "hostnames is not unique."
-            }
-        }
-}
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "path": {
+                          "type": "string",
+                          "pattern": "^/([a-zA-Z0-9]*)?(,/([a-zA-Z0-9]*)?){0,}?$",
+                          "maxLength": 50,
+                          "errorMessage": {
+                            "202": "Invalid phone number, ex: '704-374-3500;1'"
+                          }
+                        },
+                        "body": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
 
-var data1 = ["WWW.GOOGLE.COM", "12"];
+var data1 = [
+                {
+                    name: 'abc',
+                    path: "/a4,/d3,/fde,/g,/d",
+                    body: "{}"
+                }
+            ];
 
 var result1 = tv4.validateMultiple(data1, ct1);
 console.log(result1.errors);

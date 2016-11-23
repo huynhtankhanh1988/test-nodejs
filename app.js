@@ -17,32 +17,35 @@
   var moment = require('moment');
   var now = moment();
   var request = require('superagent');
-
-  // this week
-    var thisWeekStart = moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD');
-    var thisWeekEnd = moment(now).format('YYYY-MM-DD');
-    console.log("thisWeekStart " + thisWeekStart);
-    console.log("thisWeekEnd " + thisWeekEnd);
-
-    // last week
-    var lastWeekStart = moment(now).subtract(1, 'day').day(0).subtract(1, 'week')
-                                  .format('YYYY-MM-DD');
-    var lastWeekEnd = moment(now).subtract(1, 'day').day(6).subtract(1, 'week')
-                                .format('YYYY-MM-DD');
-    console.log("lastWeekStart " + lastWeekStart);
-    console.log("lastWeekEnd " + lastWeekEnd);
-
-//    console.log(moment().subtract(10, 'days').calendar());
+  var zipcodes = require('zipcodes');
 //
-//    var pd = require('pretty-data2').pd;
+//  // this week
+//    var thisWeekStart = moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD');
+//    var thisWeekEnd = moment(now).format('YYYY-MM-DD');
+//    console.log("thisWeekStart " + thisWeekStart);
+//    console.log("thisWeekEnd " + thisWeekEnd);
 //
-//    var data = '<root><fname>dfdfgdf00</fname><lname>dsfsdfs</lname></root>';
-//    var a = pd.xml(data);
+//    // last week
+//    var lastWeekStart = moment(now).subtract(1, 'day').day(0).subtract(1, 'week')
+//                                  .format('YYYY-MM-DD');
+//    var lastWeekEnd = moment(now).subtract(1, 'day').day(6).subtract(1, 'week')
+//                                .format('YYYY-MM-DD');
+//    console.log("lastWeekStart " + lastWeekStart);
+//    console.log("lastWeekEnd " + lastWeekEnd);
+//
+////    console.log(moment().subtract(10, 'days').calendar());
+////
+////    var pd = require('pretty-data2').pd;
+////
+////    var data = '<root><fname>dfdfgdf00</fname><lname>dsfsdfs</lname></root>';
+////    var a = pd.xml(data);
+////    console.log(a);
+//
+//
+//    var a = moment("20111031", "YYYYMMDD").format('ll');
 //    console.log(a);
-
-
-    var a = moment("20111031", "YYYYMMDD").format('ll');
-    console.log(a);
+    var hills = zipcodes.lookup(902210);
+    console.log(JSON.stringify(hills));
 
 
 
